@@ -1,0 +1,157 @@
+
+; ------------------------ VOCABULARY --------------------------------------
+
+VOCABULARY
+
+	VERBS
+		kig unders›g se
+		indhold bagage i
+		g†
+		quit
+		tag
+		l‘g
+		hj‘lp
+
+	NOUNS
+		tax free gave gaver
+		gate
+		billet bilet billeten biletten billetten
+		alt
+		den det
+
+	ADJECTIVES
+
+	ARTICLES
+		en
+		din
+
+	ADVERBS
+		og
+		eller
+
+
+; ----------------- OBJECTS, PLACES AND THINGS -----------------------------
+
+OBJECTS
+
+	OBJECT DEPARTURE_HALL
+		BRIEF afgangshallen
+		VERBOSE Du er i afgangshallen i lufthavnen, klar til at tage afsted p† din mission. Afgangshallen er en ren labyrint af tax-free-butikker, rulletrapper og rullende fortove. Da du checkede ind, fik du at vide, at dit fly hed XY123
+		GRAPHIC AIRPORT.PIC
+
+	OBJECT TICKET
+		BRIEF flybiletten
+		VERBOSE Der st†r: Flight XY123 at 13th of October 1990 at 17:35 from Geneva to Faraway. One way only
+		PARENT PLAYER
+
+	OBJECT GATE_24
+		BRIEF Gate no. 24
+		VERBOSE Du er ved gate nr. 24. Der er bek‘rkelsesv‘rdigt f† mennesker her, m†ske fordi de allerede er g†et ombord p† flyet
+		GRAPHIC GATE.PIC
+
+	OBJECT PLANE
+		BRIEF inde i flyet
+		VERBOSE You are in the plane, seated, and with the safety belt fastened. The crew is undertaking a safety announcement.
+		GRAPHIC PLANE.PIC
+
+
+; ---------------------- ACTIVITY PRODUCTS ---------------------------------
+
+PRODUCTS
+
+	PRODUCT TIMER1 = 0
+	PRODUCT TIMER2 = 0
+
+
+; -------------------- EVENTS AND ACTIVITIES -------------------------------
+
+EVENTS
+
+	EVENT AIRPORT_CALL
+		CONDITIONS
+			OBJECT PLAYER IN DEPARTURE_HALL
+			PRODUCT TIMER1 = 3
+			PRODUCT TIMER2 < 10
+
+		ACTIONS
+			MESSAGE En kvindestemme lyder over h›jttaleren: "Flight no. XY123 for Faraway, departure time 17:35 is now boarding at gate 24. Passengers are requested to go to gate."
+			PRODUCT TIMER1 = 0
+
+	EVENT BUY
+		CONDITIONS
+			ENTRY BUY GOODS
+			OBJECT PLAYER IN DEPARTURE_HALL Du kan ikke k›be noget her.
+
+		ACTIONS
+			MESSAGE You won't need that where you're going. Besides, you can spend your money better later.
+
+	EVENT MISSED_PLANE
+		CONDITIONS
+			OBJECT PLAYER IN DEPARTURE_HALL
+			PRODUCT TIMER2 = 10
+
+		ACTIONS
+			MESSAGE You've missed the plane! You're FIRED!
+			PRODUCT TIMER1 = -1
+			PRODUCT TIMER2 = -1
+
+	EVENT GO_TO_GATE
+		CONDITIONS
+			ENTRY GO GATE
+			OBJECT PLAYER IN DEPARTURE_HALL
+
+		ACTIONS
+			OBJECT PLAYER IN GATE_24
+
+	EVENT ENTER_PLANE
+		CONDITIONS
+			ENTRY ENTER PLANE
+			OBJECT PLAYER IN GATE_24
+
+		ACTIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 = 0
+
+	EVENT SAFETY
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 = 2
+
+		ACTIONS
+			MESSAGE You hear a male voice: "This is captain Mubarak speaking! We welcome you to this flight XY123 to Faraway. Flight time is estimated to be around 9 hours. We wish you a pleasant trip."
+
+	EVENT TAXIING
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 = 5
+
+		ACTIONS
+			MESSAGE The plane is taxiing for the runway...
+
+	EVENT TAKE_OFF
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 = 8
+
+		ACTIONS
+			MESSAGE The plane is taking off... WROOOOOOOOOOOOORRRRRHHHH!!! (the game ends here at the moment)
+
+
+; ---------------------- SYSTEM VARIABLES ----------------------------------
+
+SYSTEM
+
+	INITIAL    DEPARTURE_HALL		; Initial location of the player
+
+	LOOK       se  					; Verb for looking around
+	INVENTORY  bagage             ; Verb for examining held objects
+	GO         g†                 ; Verb for moving around
+	QUIT       QUIT               ; Verb for ending game
+	GET        tag						; Verb for taking things
+	PUT        l‘g                ; Verb for putting things down
+	HELP       hj‘lp              ; Verb for getting help on things
+	AND        og                 ; Adverb for combining things
+	OR         eller              ; Adverb for combining things
+	ALL        alt                ; Noun for refering to everything
+	IT         den						; Noun for refering to last noun again
+

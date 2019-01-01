@@ -1,0 +1,777 @@
+; Interactive Fiction Definition File
+
+; ------------------------ VOCABULARY --------------------------------------
+
+VOCABULARY DIVISION.
+
+	ACTORS
+		ADAM BOYFRIEND
+		DRIVER ANDREW
+		EVA GIRLFRIEND
+		LADY ELANOR FREDERICKSBERG
+		WOMAN
+		MAN
+		ROBERT WILLIAMS RESREP RESIDENT REPRESENTATIVE
+		SECRETARY MIRIAM GLADYS
+		STEWARDESS
+		CHARLOTTE NYBY MINISTER
+		AZUR CLERK
+		MORGAN LEE ACTIVIST
+		YOU ME YOUR MINE MY MYSELF
+
+	VERBS
+		MAGIC1			; MAZ' MAGIC THINGS
+		MAGIC2
+		MAGIC3
+
+		BE BECOME
+		BUY PURCHASE PAY
+		CHECK
+		CLOSE
+		CONSULT
+		CUT SLICE
+		DRINK SWALLOW
+		EMPTY
+		EVALUATION EVAL EVALUATE SCORE POINTS
+		FASTEN
+		FOLLOW FOLLOWING
+		FUCK SHIT PISS VOMIT BULLSHIT BOLLOCKS
+		GET TAKE PICK REMOVE
+		GIVE HAND BRING SHOW
+		GO ENTER WALK BOARD RUN EMBARK DRIVE
+		HELLO HI
+		HELP
+		HOW
+		INVENTORY
+		KILL 
+		KISS
+		LEAVE EXIT
+		LISTEN HEAR
+		LOOK EXAMINE READ LOOKUP FIND
+		NO NOTHING
+		OK FINE GOOD
+		OPEN
+		ORDER
+		PASS
+		PLANT
+		PUT DROP PLACE
+		QUIT
+		SMOKE
+		STOP DON DONT STAY
+		TALK
+		TIME
+		THANK THANKS
+		WAIT RELAX SLEEP REMAIN
+		WATCH
+		WHAT
+		WHERE
+		WHO
+		YES RIGHT AFFIRMATIVE
+
+	NOUNS
+		AIRPORT AIRFIELD
+		ALL
+		BATHROOM BATH
+		BLANKET
+		BOOK NOVEL STORY BOOKS LITTERATURE GUIDEBOOK
+		BOOKSHELF SHELF	
+		BOTTLE
+		CAR VEHICLE
+		CARE CAREFUL
+		CHECK CHECKIN
+		CHEWING GUM
+		CHOCOLATE CHOCOLATES CHOCOLATTES TOBLERTWO
+		CUPBOARD
+		CURRENCY
+		CUSTOMS CUSTOM COSTOMS COSTOM CUSTUMS CUSTUM
+		COUNTER DESK
+		DECLARATION DECLARATIONS AUTORIZATION AUTORISATION
+		DISPENSARY PHARMACY CHEMIST
+		DOG_FOOD DOGGIE_FOOD 
+		DOOR
+		DRINK LIQUER LIQUOR LIQOR
+		EQUIPMENT TOOLS THINGS
+		EXCHANGE
+		FAX FACSIMILE TELEFAX
+		FILE REPORT LETTER LOVELETTER
+		FILING CABINET FILECABINET FILINGCABINET
+		FIRE FIREBELTS
+		FOOD
+		GATE GATES
+		GOVERNMENTAL GOVERNMENT GOVERNMENTS GOVERMENT GOVERMENTS MINISTRY
+		HEAD MAIN IDO
+		FIELD
+		IT HER HIM SHE HE THAT THEM
+		KITCHEN
+		KITS KIT
+		LEADER BOSS 
+		LUGGAGE BAGGAGE SUITCASE
+		MAP
+		MACHINE
+		MEDICINE DRUGS
+		NEWSPAPER PAPER
+		NONGOVERNMENT NONGOVERNMENTAL NGO GBF GREEN FOUNDATION
+		OFFICE OFFICES BUILDING HOUSE
+		HALL
+		PATHWAY
+		BOARDING PASS
+		PASSPORT
+		PHONE TELEPHONE TELEPHONEBOOK
+		PHONEBOOK DICTIONARY
+		PLANE AEROPLANE
+		PROJECT
+		RADIO SHORTWAVE WAVE
+		ROOM
+		SEAT BELT SEATBELT
+		SHELF
+		SITE PLACE AREA
+		SOIL GROUND
+		SPAREPARTS SPARE PARTS 
+		STAFF EMPLOEES EMPLOYEE
+		STATIONARY
+		STORE
+		STREET
+		SQUARE
+		TAXFREE TAX FREE SHOP
+		TAXI CAB
+		TICKET
+		TIME
+		TOILET LOO BOG
+		TRANSIT
+		TREES TREE EUCALYPTUS
+		VERANDA
+		VILLAGE
+		VISA VISUM
+		WINE CHABLOS
+		WORKERS WORKER
+
+	ADJECTIVES
+		AID AIDS
+		DEPARTURE
+		ELDERLY OLD
+		FIRST
+		LARGE
+		SHORT
+		SMALL
+
+	PREPOSITIONS
+		AT
+		BESIDE BESIDES
+		BY
+		IN INSIDE WITHIN INTO
+		OUT FROM OFF AWAY
+		OUTSIDE
+		ON
+		OVER
+		TO
+		UNDER
+		WITH
+
+	ARTICLES
+		A AN
+		THE
+
+	ADVERBS
+		AND
+		OR
+
+; ---------------------- GENERAL MESSAGES ----------------------------------
+
+MESSAGES DIVISION.		; MSG01 - MSG36 ARE SYSTEM MESSAGES, DON'T CHANGE THE ORDER
+
+	MSG01 from
+	MSG02 take
+	MSG03 already there.
+	MSG04 can't
+	MSG05 put
+	MSG06 go
+	MSG07 that doesn't make sense - try to rephrase the sentence.
+	MSG08 can't do that. Perhaps you've misspelled something?
+	MSG09 thank you for playing. Press any key to return to MS-DOS.
+	MSG10 see
+	MSG11 and
+	MSG12 can't go there.
+	MSG13 already
+	MSG14 nothing.
+	MSG15 isn't
+	MSG16 time passes...
+	MSG17 isn't here.
+	MSG18 who are you talking to?
+	MSG19 ask
+	MSG20 about what?
+	MSG21 are
+	MSG22 is
+	MSG23 takes
+	MSG25 puts
+	MSG26 give
+	MSG27 gives
+	MSG28 has
+	MSG29 don't
+	MSG30 doesn't
+	MSG31 have
+	MSG32 to
+	MSG33 that
+	MSG34 see that person here.
+	MSG35 anything
+	MSG36 you write commands to the computer in a natural, flowing language in imperative sense. That is, you tell it what to do by issuing an action (eg. GO or TAKE) and an object to which the action should apply. When you want to talk to other people, you write their name as the first word on the command line, followed by what you want to say to them, as in MOTHER, HOW ARE YOU. You orientate by moving around between locations with the GO command, eg. GO TO THE HALLWAY. You can PICK UP or PUT DOWN things you find on your way, and you may EXAMINE these things.
+	MSG37 has arrived at
+	MSG38 has left
+	MSG39 it's nothing special.
+	MSG40 can't go directly to
+	MSG41 inside
+	MSG42 You must use the word "TO" somewhere in that GIVE-sentence. If you want to give things to people, use fx. GIVE THE BOOK TO THE WOMAN. If you want to ask someone to give something to you, include the name of the person in the command, ie. DADDY, GIVE THE BOOK TO ME.
+	MSG43 down
+	MSG44 in
+	MSG45 can't go to
+	MSG46 look
+	MSG47 Your move?
+	MSG48 can't at all go to
+	MSG49 you
+
+ 	MSG62 "STOP!," a police guard cries, "caught red-handed shoplifting, eh? Better come with me!". He takes you to a room with bars on the window and tells you to wait there. He takes what you stole.
+	MSG63 You have already bought that.
+	MSG64 She tells you that he's already following you and that you don't have to keep telling him.
+	MSG65 He tells you that he's already following you and that you don't have to keep telling him.
+	MSG66 She replies, "But I'm not following you!"
+	MSG67 He replies, "But I'm not following you!"
+	MSG68 She replies, "Ok, I'll follow you."
+	MSG69 He replies, "Ok, I'll follow you."
+	MSG70 She replies, "Ok, I'll stop following you and stay here."
+	MSG71 He replies, "Ok, I'll stop following you and stay here."
+	MSG72 You can't follow her now - she's too far away and you don't know where she's gone.
+	MSG73 You can't follow him now - he's too far away and you don't know where he's gone.
+	MSG74 You haven't got your guide book with you!
+
+
+; ---------------------- SYSTEM VARIABLES ----------------------------------
+
+SYSTEM DIVISION.
+
+	INITIAL    CHECKIN				; Initial location of the player
+
+	LOOK       LOOK					; Verb for looking around
+	INVENTORY  INVENTORY          ; Verb for examining held objects
+	GO         GO                 ; Verb for moving around
+	QUIT       QUIT               ; Verb for ending game
+	GET        GET						; Verb for taking things
+	PUT        PUT                ; Verb for putting things down
+	HELP       HELP               ; Verb for getting help on things
+	WAIT       WAIT               ; Verb for waiting
+	GIVE       GIVE					; Verb for giving things to people
+	AND        AND                ; Adverb for combining things
+	OR         OR                 ; Adverb for combining things
+	ALL        ALL                ; Noun for referring to everything
+	IT         IT						; Noun for referring to last noun again
+	WHAT       WHAT					; Noun for referring to unknown objects
+	YOU        YOU						; Noun for referring to the player
+	IN         IN						; Preposition for referring to insides
+	OUT        OUT                ; Preposition for referring to insides
+
+
+; --------------------------------------------------------------------------
+
+OBJECTS
+
+	OBJECT TREES STATIC
+		BRIEF1 the trees
+		VERBOSE Lots and lots...
+		
+	OBJECT WORKERS STATIC
+		BRIEF1 the workers
+		VERBOSE Strong and hard-working.
+
+	OBJECT EVAL STATIC
+		BRIEF1 evaluation
+		VERBOSE The game has ended. You will now be given your evaluation. Type OK.
+		GRAPHIC EVAL.PIC
+		
+
+; The rest of the game is for completely generic events, objects and
+; products only.
+
+PRODUCTS DIVISION.
+
+; GENERIC PRODUCTS
+
+	PRODUCT TREES             = 0
+	PRODUCT NUM_TREES         = 0
+	PRODUCT TYP_TREES         = 0
+	PRODUCT WID_TREES         = 0
+	PRODUCT WID_BELTS					= 0
+	PRODUCT PLANTED           = 0
+	PRODUCT FUNDS             = 0
+	PRODUCT WATER_GIVEN       = 0
+	PRODUCT HOWMUCH_WATER     = 0
+	PRODUCT EATEN             = 0
+	PRODUCT BURNED            = 0
+	PRODUCT SICK              = 0
+		
+	PRODUCT FRIEND_FOLLOW     = 0
+	PRODUCT FRIEND_FOLLOW1    = 0
+	PRODUCT BOYFRIEND_CHECK   = 0
+	PRODUCT GIRLFRIEND_CHECK  = 0
+
+	PRODUCT ISMALE            = 0			; Male or female - these flags tell
+	PRODUCT ISFEMALE          = 0
+
+	PRODUCT GAME              = 1       ; As long as the game runs, > 0
+	PRODUCT DO_EVAL		     = 0
+
+
+	PRODUCT DISASTER_COUNT = 0
+
+; TIMER PRODUCTS
+
+	PRODUCT TIMER   = 0						; The MAIN timer - counts seconds
+
+; RANDOM PRODUCTS
+
+; (NO RANDOMS IN DEMO GAME)
+
+EVENTS DIVISION
+
+	EVENT GREETINGS
+		CONDITIONS
+			ENTRY HELLO
+		ACTIONS
+			MESSAGE You say hello.
+
+	EVENT MAGIC1
+		CONDITIONS
+			ENTRY MAGIC1
+		ACTIONS
+			OBJECT PLAYER IN AIRPORT_STREET
+
+	EVENT CHECK_GIRLFRIEND
+		CONDITIONS
+			OBJECT GIRLFRIEND WITH PLAYER
+			PRODUCT GIRLFRIEND_CHECK = 0
+		ACTIONS
+			PRODUCT FRIEND_FOLLOW    = 1
+			PRODUCT GIRLFRIEND_CHECK = 1
+			PRODUCT ISMALE           = 1
+
+	EVENT CHECK_BOYFRIEND
+		CONDITIONS
+			OBJECT BOYFRIEND WITH PLAYER
+			PRODUCT BOYFRIEND_CHECK  = 0
+		ACTIONS
+			PRODUCT FRIEND_FOLLOW    = 1
+			PRODUCT BOYFRIEND_CHECK  = 1
+			PRODUCT ISFEMALE         = 1
+
+	EVENT GENERICTHANKS
+		CONDITIONS
+			ENTRY THANK
+		ACTIONS
+			MESSAGE You thank.
+
+	EVENT FOUL_LANGUAGE
+		CONDITIONS
+			ENTRY FUCK
+		ACTIONS
+			MESSAGE You don't need that kind of language to complete this game!
+
+	EVENT GIRLFRIEND_FOLLOW_ME
+		CONDITIONS
+			ENTRY GIRLFRIEND FOLLOW ME
+			PRODUCT FRIEND_FOLLOW = 0 ERROR MSG64
+		ACTIONS
+			MESSAGE MSG60
+			PRODUCT FRIEND_FOLLOW = 1
+
+	EVENT GIRLFRIEND_STOP_FOLLOWING
+		CONDITIONS
+			ENTRY GIRLFRIEND STOP ME
+			PRODUCT FRIEND_FOLLOW = 1 ERROR MSG66
+		ACTIONS
+			MESSAGE MSG70
+			PRODUCT FRIEND_FOLLOW = 0
+
+	EVENT GIRLFRIEND_FOLLOWING
+		CONDITIONS
+			PRODUCT FRIEND_FOLLOW = 1
+			PRODUCT GIRLFRIEND_CHECK = 1
+			OBJECT GIRLFRIEND NOTWITH PLAYER
+		ACTIONS
+			OBJECT GIRLFRIEND WITH PLAYER
+
+	EVENT FOLLOW_GIRLFRIEND
+		CONDITIONS
+			ENTRY FOLLOW GIRLFRIEND
+			OBJECT GIRLFRIEND WASWITH PLAYER ERROR MSG72
+		ACTIONS
+			MESSAGE You follow Eva, your girlfriend.
+			OBJECT PLAYER WITH GIRLFRIEND
+
+	EVENT BOYFRIEND_FOLLOW_ME
+		CONDITIONS
+			ENTRY BOYFRIEND FOLLOW ME
+			PRODUCT FRIEND_FOLLOW = 0 ERROR MSG65
+		ACTIONS
+			MESSAGE MSG61
+			PRODUCT FRIEND_FOLLOW = 1
+
+	EVENT BOYFRIEND_STOP_FOLLOWING
+		CONDITIONS
+			ENTRY BOYFRIEND STOP ME
+			PRODUCT FRIEND_FOLLOW = 1 ERROR MSG67
+		ACTIONS
+			MESSAGE MSG71
+			PRODUCT FRIEND_FOLLOW = 0
+
+	EVENT BOYFRIEND_FOLLOWING
+		CONDITIONS
+			PRODUCT FRIEND_FOLLOW   = 1
+			PRODUCT BOYFRIEND_CHECK = 1
+			OBJECT BOYFRIEND NOTWITH PLAYER
+		ACTIONS
+			OBJECT BOYFRIEND WITH PLAYER
+
+	EVENT FOLLOW_BOYFRIEND
+		CONDITIONS
+			ENTRY FOLLOW BOYFRIEND
+			OBJECT BOYFRIEND WASWITH PLAYER ERROR MSG73
+		ACTIONS
+			MESSAGE You follow Adam, your boyfriend.
+			OBJECT PLAYER WITH BOYFRIEND
+
+	EVENT TIME1
+		CONDITIONS
+			ENTRY TIME
+		ACTIONS
+			MESSAGE It's now $TIME.
+
+	EVENT TIME2
+		CONDITIONS
+			ENTRY WHAT TIME
+		ACTIONS
+			MESSAGE It's now $TIME.
+
+	EVENT IAMFINE
+		CONDITIONS
+			ENTRY OK
+		ACTIONS
+			MESSAGE You confirm.
+
+	EVENT WORKERS_MOVES
+		CONDITIONS
+			OBJECT WORKERS NOTIN SITE
+			PRODUCT FUNDS = 1
+		ACTIONS
+			OBJECT WORKERS IN SITE
+
+	EVENT TREES_MOVES
+		CONDITIONS
+			OBJECT TREES NOTIN SITE
+			PRODUCT TREES = 1
+		ACTIONS
+			OBJECT TREES IN SITE
+
+	EVENT PLANT_EM
+		CONDITIONS
+			ENTRY PLANT TREES
+			OBJECT PLAYER WITH TREES ERROR There are no trees to plant.
+			OBJECT PLAYER WITH WORKERS ERROR There are no workers to plant the trees.
+		ACTIONS
+			PRODUCT PLANTED = 1
+			MESSAGE You commence the planting of the trees. The foreman comes up to you and asks you with what frequency the trees should be planted.
+			
+	EVENT HOWMANYTREES
+		CONDITIONS
+			PRODUCT PLANTED = 1
+			PRODUCT WID_TREES = 0
+		ACTIONS
+			INPUT WID_TREES He asks, "How many trees per hectar"? 
+			
+	EVENT THANKSMANYTREES
+		CONDITIONS
+			PRODUCT PLANTED = 1
+			PRODUCT WID_TREES > 1
+		ACTIONS
+			PRODUCT PLANTED = 2
+			MESSAGE He asks you if there are any other instruction that you need to tell him. If there are, this is your last chance! If not, just say NO.
+
+	EVENT NOTHINGELSE
+		CONDITIONS
+			ENTRY NO
+			PRODUCT PLANTED = 2
+		ACTIONS
+			PRODUCT PLANTED = 3
+			MESSAGE Ok. Now the workers get to work. All you can do is WAIT!
+
+	EVENT REMEMBERFIREBELTS
+		CONDITIONS
+			ENTRY FIRE
+			PRODUCT PLANTED = 2
+		ACTIONS
+			INPUT WID_BELTS How many fire belts? 
+			MESSAGE Right, firebelts will be put in the plantation. Anything else?
+
+; DISASTERS --------------
+
+; That's it...
+
+	EVENT QUIT-AND-END-GAME
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 4
+		ACTIONS
+			OBJECT PLAYER IN EVAL			
+
+	EVENT DISEASE1
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 3
+			PRODUCT TYP_TREES = 1
+		ACTIONS
+			MESSAGE BAD LUCK! Your trees have been attacked by a tree disease. All your Eucalyptus trees have died.
+			PRODUCT DISASTER_COUNT = 4
+			PRODUCT SICK = 1
+			
+	EVENT DISEASE2
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 3
+			PRODUCT TYP_TREES = 2
+		ACTIONS
+			MESSAGE BAD LUCK! Your trees have been attacked by a tree disease. All your Palm trees have died.
+			PRODUCT DISASTER_COUNT = 4
+			PRODUCT SICK = 1
+
+	EVENT DISEASE2
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 3
+			PRODUCT TYP_TREES = 3
+		ACTIONS
+			MESSAGE BAD LUCK! Your trees have been attacked by a tree disease. Fortunately, only half the trees died, as you planted several different species.
+			PRODUCT DISASTER_COUNT = 4
+			PRODUCT SICk = 2
+
+	EVENT FIRE2
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 2
+			PRODUCT WID_BELTS = 0
+		ACTIONS
+			MESSAGE BAD LUCK! Your forest has caught fire! Almost all of your trees burned down, as you did not implement fire-belts when planning the plantation.
+			PRODUCT DISASTER_COUNT = 3
+			PRODUCT BURNED = 1
+	
+	EVENT FIRE2
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 2
+			PRODUCT WID_BELTS < 10
+		ACTIONS
+			MESSAGE BAD LUCK! Your forest has caught fire! Your fire belts saved 50% of the forest, though.
+			PRODUCT DISASTER_COUNT = 3
+			PRODUCT BURNED = 2
+			
+	EVENT FIRE3
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 2
+		ACTIONS
+			MESSAGE BAD LUCK! Your forest has caught fire! Fortunately, though, your fire belts saved 95% of the trees.
+			PRODUCT DISASTER_COUNT = 3
+			PRODUCT BURNED = 3
+			
+	EVENT WATERNEED
+		CONDITIONS
+			PRODUCT DISASTER_COUNT = 1
+		ACTIONS
+			MESSAGE BAD LUCK! The nearby village of 2.000 people is badly in need of water. They need water now, or many of them may die. Of your 50t of water, how much are you prepared to donate to the village?
+			PRODUCT WATER_GIVEN = 1
+			PRODUCT DISASTER_COUNT = 2
+
+	EVENT WATERNEED1
+		CONDITIONS
+			PRODUCT WATER_GIVEN = 1
+		ACTIONS
+			INPUT HOWMUCH_WATER Enter amount (in tonnes): 
+			PRODUCT WATER_GIVEN = 2
+      MESSAGE Your donation of water is much appreciated at the village.
+
+	EVENT GRASSHOPPERS
+		CONDITIONS
+			PRODUCT PLANTED = 3
+			PRODUCT DISASTER_COUNT = 0
+		ACTIONS
+			MESSAGE BAD LUCK! Grasshoppers are attacking the baby trees at the project site.
+			PRODUCT DISASTER_COUNT = 1
+			PRODUCT EATEN = 1
+
+; *** EVALUATION ***
+; ==================
+
+	EVENT CHECK_EVAL
+		CONDITIONS
+			OBJECT PLAYER IN EVAL
+		ACTIONS
+			PRODUCT DO_EVAL = 1
+
+	EVENT CHECK_EVAL
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+		ACTIONS
+			MESSAGE Here is your evaluation:
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT TYP_TREES = 1
+		ACTIONS
+			MESSAGE - You used only one kind of trees, which makes a tree-disease disasterous.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT TYP_TREES = 2
+		ACTIONS
+			MESSAGE - You used only one kind of trees, which makes a tree-disease disasterous.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT TYP_TREES = 3
+		ACTIONS
+			MESSAGE + You used two kinds of trees, which lowers the damage in case of diesase.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT NUM_TREES < 380
+			PRODUCT NUM_TREES > 340
+		ACTIONS
+			MESSAGE + You ordered about the right amount of trees.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT NUM_TREES > 380
+		ACTIONS
+			MESSAGE - You ordered too many trees, about 360,000 would have been right.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT NUM_TREES < 340
+		ACTIONS
+			MESSAGE - You ordered too few trees, about 360,000 would have been right.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WID_TREES < 25
+		ACTIONS
+			MESSAGE - You planted too few trees per hectar, thus not using resources optimally.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WID_TREES > 30
+		ACTIONS
+			MESSAGE - You planted too many trees per hectar, thus drying out the wells.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WID_TREES > 25
+			PRODUCT WID_TREES < 25
+		ACTIONS
+			MESSAGE + You planted the right amount of trees, thus preserving ground moist.
+
+;	EVENT EVALUATION
+;		CONDITIONS
+;			PRODUCT DO_EVAL = 1
+;		ACTIONS
+;			MESSAGE - You did not do a soil analysis prior to planting the trees.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+		ACTIONS
+			MESSAGE - You signed a contract without authorisation from headquarters.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT EATEN = 1
+		ACTIONS
+			MESSAGE ! You had bad luck. 20% of your trees were eaten by grasshoppers.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WATER_GIVEN = 2
+			PRODUCT HOWMUCH_WATER < 10
+		ACTIONS
+			MESSAGE - You gave water to the village, but not at all enough. 200 people died.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WATER_GIVEN = 2
+			PRODUCT HOWMUCH_WATER < 20
+			PRODUCT HOWMUCH_WATER > 9
+		ACTIONS
+			MESSAGE - You gave water to the village, but not quite enough. 20 people died.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WATER_GIVEN = 2
+			PRODUCT HOWMUCH_WATER > 19
+			PRODUCT HOWMUCH_WATER < 30
+		ACTIONS
+			MESSAGE + You gave water to the village, saving hundreds of peoples lives.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT WATER_GIVEN = 2
+			PRODUCT HOWMUCH_WATER > 29
+		ACTIONS
+			MESSAGE - You gave water to the village, but more than needed.
+			
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT BURNED = 1
+		ACTIONS
+			MESSAGE - Your forest burned down, because you forgot to implement fire belts.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT BURNED = 2
+		ACTIONS
+			MESSAGE + Only half your forest burned down, as you implemented some fire belts.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT BURNED = 3
+		ACTIONS
+			MESSAGE + Just some 5% of the trees burned, due to ample amounts of fire belts.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT SICK = 1
+		ACTIONS
+			MESSAGE - All your trees were killed by a disease, as you had only one kind.
+
+	EVENT EVALUATION
+		CONDITIONS
+			PRODUCT DO_EVAL = 1
+			PRODUCT SICK = 2
+		ACTIONS
+			MESSAGE + Only half your trees were killed by a disease, as you had different kinds.
+
+; Now, we'll try to include the different "chapters" of the game as
+; include files:
+
+	INCLUDE AIRPORT.IFS				; The scenes from the airport complex
+	INCLUDE HEADOFF.IFS				; The scenes from the head office
+	INCLUDE NGO.IFS					; The non-governmental organisations scenes
+	INCLUDE GOVERNME.IFS				; The governmental office building scenes
+	INCLUDE FIELD.IFS					; The scenes from field office
+	INCLUDE CAR.IFS
+	INCLUDE GUIDES.IFS
+	

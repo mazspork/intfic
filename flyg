@@ -1,0 +1,1104 @@
+; Interactive Fiction Definition File
+
+
+; ------------------------ VOCABULARY --------------------------------------
+
+
+VOCABULARY DIVISION.
+
+	ACTORS
+		ADAM POJKV„N POJK V„N V„NNEN
+		ANDREW MUMBLES ASSISTENT ASSISTENTEN
+		BOKF”RS„LJARE BOKHANDLAREN BOKHANDLARE BOKF”RS„LJAREN
+		CHEF CHEFEN
+		F”RARE TAXI CHAUFF”R CHAUF”REN
+		EVA FLICKV„N FLICK
+		GARY AUSTIN EXPERT EXPERTEN
+		DAM DAMEN
+		KVINNA KVINNAN
+		LINDA LOVELACE RESREP RESIDENT REPRESENTATIVE
+		F”RS„LJARE BITR„DE
+		SEKRETERARE MIRIAM GLADYS
+		FLYG V„RDINNA
+		DU  MEJ  DIN  DITT  ER ERT  MIN  MITT  SJ„LV  JAG JAGSJ„LV
+
+	VERBS
+		MAGIC1
+		MAGIC2
+
+		VARA BLI
+		K”PA BETALA
+		CHECK
+		ST„NG
+		SK„R SKIVA
+		DRICK SV„LJ
+                ANST„LL HYR REKRYTERA
+		TOM
+		S„TT SP„NN PAA FAST
+		F”LJ F”LJANDE
+		SKIT DJ„VLA F”RBANNAT
+		TAG PLOCKA V„LJ
+		GE H„MTA SERVERA
+		GAA OMBORD SPRINGA K”RA
+		HJ„LP
+		HUR
+		INVENTARIE
+		D”DA AVLIVA
+		KYSS PUSS SL„T
+		L„MNA UTGAA
+		LYSSNA H”RA H”R LYSS
+		TITTA EXAMINERA L„S L„SA SLAA UPP HITTA
+		NEJ INTE N„
+		”PPNA
+		BEST„LL BEORDRA
+		PASSERA
+		ST„LL TAPPA PLACERA
+		SLUTA AVSLUTA STOPPA
+		R”KA
+		STOPP
+		TALA
+		TID
+		W„NTA SLAPPNA AV
+		TITTA
+		VA SA VASA HURSA HUR
+		VAR VARDAA
+		VEM
+		JA
+
+	NOUNS
+		AVGAANGSHALLEN
+		INFORMATIONS
+		DISKEN
+		CHOKLAD
+		FLYGPLATS FLYGF„LT
+		ALLA
+		BAD BADRUM
+		BOK NOVELL ROMAN DECKARE
+		BOKHYLLA BOKSTAAND
+            	B”CKER LITTERATUR
+		BOKHANDEL BOKHANDELN
+		FLASKA
+		BYGGNAD HUS
+		BIL FORDON
+		F”RSIKTIG F”RSIKTIGT VARSAM VARSAMT
+		CHECK CHECKIN DISK
+		CHOKLAD CHOKLADEN TOBLERTWO
+		CIGARETT CIG SCARBORO
+		SKAAP GARDEROB
+		D”RR
+		DRYCK
+		SAKER TING UTRUSTNING VERKTYG
+		FAX TELEFAX FACSIMILE
+		REGISTER BREV K„RLEKSBREV
+		REGISTERSKAAP
+		GATE UTGAANG
+		DEN DET HANS HENNES HAN HON HONOM HENNE DE DEM DOM
+		K”K
+		SATS KIT
+		LEDARE CHEF 
+		BAGAGE V„SKA BAG
+		MACHIN
+		MEDICIN 
+		TIDNING DAGSTIDNING DAGS
+		KONTOR
+		HALL
+		GAANGV„G
+		BOARDING PASS
+                TELEFON TELEFONBOK
+		LEXICON
+		PLAN FLYGPLAN PLANET FLYGPLANET
+		PROJEKT
+		RADIO KORTVAAG
+		RUM
+		HYLLA
+		ST„LLE PLATS OMRAADE AREA
+		DELAR RESERVDELAR
+                SPADE SPADAR 
+		ANST„LLD ANST„LLDA
+		KONTORSMATERIAL
+		AFF„R SHOP
+		GATA
+		TORG PLATS
+		TAXFREE SKATTE FRITT SKATTEFRITT
+		TAXI 
+		BILJETT
+		TID
+		TOILET TOALETT WC MUGGEN SKITHUSET
+		TRANSIT 
+		TR„D TR„DEN
+		VERANDA VERANDAN
+		BY
+		VIN VINARE CHABLOS
+		WHISKY TULLALESS
+                ARBETARE
+
+	ADJECTIVES
+		HJ„LPEN
+		ANKOMST FRAMKOMST
+		AVGAANG
+		„LDRE GAMMAL
+		F”RST
+		STOR ST”RST 
+		HUVUDSAKLIG
+		KORT
+		LITEN SMAA
+
+	PREPOSITIONS
+		VID
+		VIDSIDAN BREDVID
+		PAA
+		I INUTI INNI
+		UT FRAAN AV IV„G
+		UTSIDA
+		
+		”VER
+		TILL
+		UNDER
+		MED
+
+	ARTICLES
+		EN ETT
+		DEN DET
+
+	ADVERBS
+		OCH
+		ELLER
+
+; ---------------------- GENERAL MESSAGES ----------------------------------
+
+MESSAGES DIVISION.		; MSG01 - MSG36 ARE SYSTEM MESSAGES, DON'T CHANGE THE ORDER
+
+	MSG01 fraan
+	MSG02 ta
+	MSG03 redan d„r.
+	MSG04 kan inte
+	MSG05 l„gg
+	MSG06 gaa
+	MSG07 det verkar inte rimligt - formulera om meningen.
+	MSG08 kan inte g”ra det - kanske en felstavning?
+	MSG09 tack f”r att du spelat. Tryck paa valfri tangent f”r att aaterv„nda till MS-DOS.
+	MSG10 se
+	MSG11 och
+	MSG12 kan inte gaa dit.
+	MSG13 redan
+	MSG14 ingenting.
+	MSG15 „r inte
+	MSG16 tiden gaar...
+	MSG17 „r inte h„r.
+	MSG18 vem talar du till?
+	MSG19 fraaga
+	MSG20 om vad?
+	MSG21 „r
+	MSG22 „r
+	MSG23 tar
+	MSG25 l„gger
+	MSG26 ger
+	MSG27 ger
+	MSG28 har
+	MSG29 g”r inte
+	MSG30 g”r inte
+	MSG31 ha
+	MSG32 till
+	MSG33 den d„r
+	MSG34 ser den personen h„r.
+	MSG35 naagaanting
+	MSG36 du skriver kommandon till datorn paa ett naturligt, l”pande  spraak (imperativ). Det vill s„ga, du talar om vad som skall g”ras genom att ange en handling (tex. GAA eller TAG)  och ett objekt som handlingen skall utf”ras paa/f”r. N„r du vill tala till  andra personer, skriver du deras namn som f”rsta ord paa raden, d„refter skriver du vad du vill s„ga till dom, tex.  Eva, hur maar du. Du f”rflyttar dig genom att anv„nda GAA kommandot, tex. GAA TILL HALLEN. Du kan TA UPP eller L„GGA NER saker som du finner, och du kan TITTA paa dem.
+	MSG37 har kommit till
+	MSG38 har l„mnat
+	MSG39 det „r inget speciellt.
+	MSG40 kan inte gaa direkt till
+	MSG41 insida
+	MSG42 Du maaste anv„nda ordet "TILL" naagonstans  i  GE-meningen.  Om  du skall ge naagot till personer,  skriv  tex.  GE BOKEN TILL KVINNAN. Om du vill be naagon att ge naagot till dig, skriv personens namn i meningen, tex. PAPPA, GE BOKEN TILL MIG.
+	MSG43 ner
+	MSG44 in
+	MSG45 kan inte gaa till
+	MSG46 titta
+	MSG47 Ditt drag?
+
+ 	MSG62 "STOPP!," a police guard cries, "caught red-handed shoplifting, eh? Better come with me!". He takes you to a room with bars on the window and tells you to wait there. He takes what you stole.
+	MSG63 You have already bought that.
+	MSG64 She tells you that he's already following you and that you don't have to keep telling him.
+	MSG65 He tells you that he's already following you and that you don't have to keep telling him.
+	MSG66 She replies, "But I'm not following you!"
+	MSG67 He replies, "But I'm not following you!"
+	MSG68 She replies, "Ok, I'll follow you."
+	MSG69 He replies, "Ok, I'll follow you."
+	MSG70 She replies, "Ok, I'll stop following you and stay here."
+	MSG71 He replies, "Ok, I'll stop following you and stay here."
+	MSG72 You can't follow her now - she's too far away and you don't know where she's gone.
+	MSG73 You can't follow him now - he's too far away and you don't know where he's gone.
+
+; ----------------- OBJECTS, PLACES AND THINGS -----------------------------
+
+OBJECTS DIVISION.
+
+
+; PROJECT 2 - LOCATIONS
+
+  OBJECT OUTSIDE_OFF2 STATIC
+    BRIEF1 utanf”r byggnaden
+    VERBOSE Du staar utanf”r kontorsbyggnaden till projekt 2.
+    EXITS VERANDA2
+
+	OBJECT VERANDA2 STATIC
+		BRIEF1 verandan
+		VERBOSE You are standing in the veranda of the project 2 building.  This place is used for social activities, working place and often in the nights as sleeping place for visitors. From here, you can enter the staff office and the office of the project leader.
+		EXITS OUTSIDE_OFF2 STAFF_OFFICE2 LEADER_OFFICE2 KITCHEN2 ; (remove this)
+
+	OBJECT STAFF_OFFICE2 STATIC
+		BRIEF1 projekt-medlemmarnas rum
+		VERBOSE You are now in the staff office. From here you can enter the office of the project leader, the kitchen and a store room.  
+		EXITS VERANDA2 LEADER_OFFICE2 KITCHEN2 STORE_ROOM2
+
+	OBJECT LEADER_OFFICE2 STATIC
+		BRIEF1 projekt ledarens kontor
+		VERBOSE Your are in the office of the project leader.  There is all the usual stuff and on the wall there is a picture of the former project leaders dog. From here, you can go to the veranda as well as to the staff office.
+		EXITS VERANDA2 STAFF_OFFICE2
+
+	OBJECT KITCHEN2 STATIC
+		BRIEF1 k”ket 
+		VERBOSE You are in the kitchen where there is a stow, a kitchen sink, a table, two chairs and a cupboard with some food. You can go back to staff office 2 from here.
+		EXITS STAFF_OFFICE2
+
+	OBJECT STORE_ROOM2 STATIC        
+		BRIEF1 f”rraadet
+		VERBOSE You are in the store room.  On the shelfs along the wall you see stationary, medical equipment, some spare parts for machinary and a lot of spiders.
+		EXITS STAFF_OFFICE2
+
+	OBJECT DESK21 STATIC
+		BRIEF1 projekt-medlemmarnas skivbord
+ 		VERBOSE You see a desk with a lot of papers.  The piles contents reports.
+		PARENT STAFF_OFFICE2
+
+	OBJECT FIRST_AID_KIT2   
+		BRIEF1 F”rsta Hj„lpen sats  
+    VERBOSE You see a box with medical equipment.
+    PARENT STORE_ROOM2     
+
+
+; THE AIRPORT COMPLEX (DEPARTING) - LOCATIONS
+
+  OBJECT LOVE1
+    Brief1 ett k„rleksbrev
+    Brief2 k„rleksbrevet
+    Verbose Dear $FNAME - Hope you are fine.  When are you coming home? If you don't come soon I get very angry. I might find myself another to love.
+    Graphic love1.pic
+
+	OBJECT DEPT_HALL STATIC
+		BRIEF1 avgaangshallen
+		VERBOSE You are in the departure hall. You can go to to the check-in counter.
+		EXITS CHECKIN
+		GRAPHIC DEPTHALL.PIC
+
+	OBJECT CHECKIN STATIC
+		BRIEF1 inchecknings disk
+		VERBOSE You are at the check-in counter.
+		EXITS DEPT_HALL
+		GRAPHIC CHECKIN.PIC
+
+	OBJECT TRANSIT1 STATIC
+		BRIEF1 transit hallen
+		VERBOSE You are in the transit hall. You can go to the tax-free shop, the bookstore, the information counter and to the gates.
+		EXITS GATE TAXFREE BOOKSTORE INFODESK1
+		GRAPHIC TRANSIT.PIC
+
+	OBJECT GATE STATIC
+		BRIEF1 utgaang no. 24
+		VERBOSE You are by gate no. 24. You can embark the plane.
+		EXITS TRANSIT1 PLANE INFODESK1
+		GRAPHIC GATE.PIC
+
+	OBJECT TAXFREE STATIC
+		BRIEF1 skatte fria aff„ren
+		VERBOSE You are in the tax-free shop.
+		EXITS TRANSIT1 GATE INFODESK1
+		GRAPHIC TAXFREE.PIC
+
+	OBJECT BOOKSTORE STATIC
+		BRIEF1 bokhandeln
+		VERBOSE You are in the bookstore.
+		EXITS TRANSIT1 GATE INFODESK1
+		GRAPHIC BOOKSHOP.PIC
+
+	OBJECT INFODESK1 STATIC
+		BRIEF1 informations disken
+		VERBOSE You are at the information counter in the transit hall.
+		EXITS TRANSIT1 GATE BOOKSTORE TAXFREE
+		GRAPHIC INFO1.PIC
+
+	OBJECT PRISON STATIC
+		BRIEF1 flygplats h„ktet
+		VERBOSE You are in the airport prison. You can't get out...
+		GRAPHIC PRISON.PIC
+
+; THE AIRPORT COMPLEX (DEPARTING) - THINGS
+
+	OBJECT NEWSPAPER
+		BRIEF1 en dagstidning
+		BRIEF2 dagstidningen
+		VERBOSE You read the paper. There is an interesting article about deserts, which says that given a highland area, ample water for tree growth will always exist two feet below the ground.
+		PARENT BOOKSTORE
+
+	OBJECT NOVEL
+		BRIEF1 en novell med titeln "Eat the rich"
+		BRIEF2 novellen
+		VERBOSE This kind of book is good for reading when you've got lots of time to kill.
+		PARENT BOOKSTORE
+
+	OBJECT RADIO
+		BRIEF1 en kortvaags radio
+		BRIEF2 radion
+		VERBOSE The radio can pick up all major radio broadcasts.
+		PARENT TAXFREE
+
+	OBJECT WINE
+		BRIEF1 en flaska med vin
+		BRIEF2 vinet
+		VERBOSE It's a bottle of Chablos '84.
+		PARENT TAXFREE
+
+	OBJECT WHISKY
+		BRIEF1 en flaska med whisky
+		BRIEF2 whiskyn
+		VERBOSE It's a bottle of Tullaless malt whisky.
+		PARENT TAXFREE
+
+	OBJECT CHOCOLATE
+		BRIEF1 chocklad
+		BRIEF2 chockladen
+		VERBOSE The chocolate, called Toblertwo, looks nourishing.
+		PARENT TAXFREE
+
+	OBJECT CIGARETTES
+		BRIEF1 ett cigarett paket
+		BRIEF2 cigaretterna
+		VERBOSE It's a box of Scarboro filter cigarettes.
+		PARENT TAXFREE
+
+	OBJECT LUGGAGE
+		BRIEF1 ditt bagage
+		BRIEF2 bagaget
+		VERBOSE You see your luggage - a massive bag with all your personal things in it.
+		PARENT PLAYER
+
+	OBJECT TICKET
+		BRIEF1 din biljett
+		BRIEF2 biljetten
+		VERBOSE It reads: "Flight no. AB123 for Faraway at 12/3/91 15:25"
+		PARENT PLAYER
+
+	OBJECT BOARDING_PASS
+		BRIEF1 ditt boarding pass
+		VERBOSE det staar: $LNAME, $COUNTRY. Plats no. 32E.
+
+	OBJECT LITTERATURE
+		BRIEF1 naagra b”cker om att leva i Faraway
+		BRIEF2 b”ckerna
+		VERBOSE These books will tell you about living conditions etc...
+		PARENT LUGGAGE
+
+; THE AIRPORT COMPLEX (DEPARTING) - PEOPLE
+
+	OBJECT CHECKINLADY ACTOR
+		BRIEF1 damen bakom disken
+		VERBOSE She looks like the kind of person that tells the same thing to 500 people every day...
+		PARENT CHECKIN
+
+	OBJECT BOOKSELLER ACTOR
+		BRIEF1 bokf”rs„ljaren
+		VERBOSE The bookseller is a young girl with narrow glasses.
+		PARENT BOOKSTORE
+
+	OBJECT TAXFREESELLER ACTOR
+		BRIEF1 tax-free f”rs„ljaren 
+		VERBOSE The sales person looks like he wants to go home.
+		PARENT TAXFREE
+
+	OBJECT GIRLFRIEND ACTOR
+		BRIEF1 Eva (din flickv„n)
+		VERBOSE You know what she looks like!
+
+	OBJECT BOYFRIEND ACTOR
+		BRIEF1 Adam (din pojkv„n)
+		VERBOSE You know what he looks like!
+
+	OBJECT OLD_LADY ACTOR
+		BRIEF1 en gammal dam
+		BRIEF2 den gamla damen
+		VERBOSE She's a gentle looking elderly woman with bright, blue eyes and snow-white hair. She is wearing clothes as was she still in the 1950's.
+		PARENT GATE
+
+; THE AEROPLANE - LOCATIONS
+
+	OBJECT PLANE STATIC
+		BRIEF1 planet
+		VERBOSE You are inside the plane, seated.
+		EXITS PLANE_TOILET
+
+	OBJECT PLANE_TOILET STATIC
+		BRIEF1 en liten toilet
+		VERBOSE You are inside the small toilet in the back of the plane.
+		EXITS PLANE
+
+; THE AEROPLANE - THINGS
+
+	OBJECT DRINK
+		BRIEF1 en dryck
+		BRIEF2 drycken
+		VERBOSE It's 5 cl of a liqour which looks very nice.
+
+; THE AEROPLANE - PEOPLE
+
+	OBJECT STEWARDESS ACTOR
+		BRIEF1 flygv„rdinnan
+		VERBOSE She's a fair-haired, blue-eyed beauty. But she looks tough.
+		PARENT PLANE
+
+; THE AIRPORT COMPLEX (ARRIVING) - PLACES
+
+	OBJECT ARR_HALL STATIC
+		BRIEF1 avgaangshallen
+		VERBOSE You are in the arrival hall in Faraway. Outside is the main street.
+		EXITS MAIN_STREET
+
+	OBJECT MAIN_STREET STATIC
+		BRIEF1 huvud gatan
+		VERBOSE You are in the main street in Faraway besides the airport.
+		EXITS ARR_HALL
+
+; THE AIRPORT COMPLEX (ARRIVING) - THINGS
+
+; THE AIRPORT COMPLEX (ARRIVING) - PEOPLE
+
+; --------------------------------------
+; -----          THINGS           ------
+; --------------------------------------
+
+; --------------------------------------
+; -----      OTHER PEOPLE         ------
+; --------------------------------------
+       
+
+
+; ---------------------- ACTIVITY PRODUCTS ---------------------------------
+
+PRODUCTS DIVISION.
+
+; GENERIC PRODUCTS
+
+	PRODUCT DRIVING           = 0			; Flags to say if you've paid for these goods
+	PRODUCT WINE              = 0
+	PRODUCT WHISKY            = 0
+	PRODUCT CIGARETTES        = 0
+	PRODUCT CHOCOLATE         = 0
+	PRODUCT NOVEL             = 0
+	PRODUCT NEWSPAPER         = 0
+	PRODUCT RADIO             = 0
+          PRODUCT LOVE1             = 0     ; Have received love1 letter
+
+	PRODUCT EXPERT_FOLLOW     = 0			; Flags to say if someone is following you
+	PRODUCT SECRETARY_FOLOW   = 0
+	PRODUCT TAXIDRIVER_FOLLOW = 0
+	PRODUCT CHIEF_FOLLOW      = 0
+	PRODUCT RESREP_FOLLOW     = 0
+	PRODUCT ASSISTANT_FOLLOW  = 0
+	PRODUCT BOOKSELLER_FOLLOW = 0
+	PRODUCT FRIEND_FOLLOW     = 0
+	PRODUCT FRIEND_FOLLOW1    = 0
+	PRODUCT BOYFRIEND_CHECK   = 0
+	PRODUCT GIRLFRIEND_CHECK  = 0
+
+	PRODUCT WEIGHT_OK         = 0       ; Is wheigt ok?
+	PRODUCT CHECKED_IN        = 0			; Have you checked in yet?
+	PRODUCT PLANE_ANNOUNCE    = 0       ; Counts announcements
+	PRODUCT ALCOHOL           = 0       ; How much alcohol in the blood
+
+	PRODUCT GAME              = 1       ; As long as the game runs, > 0
+
+; TIMER PRODUCTS
+
+	PRODUCT TIMER   = 0						; The MAIN timer !
+	PRODUCT TIMER1  = -1
+	PRODUCT TIMER2  = -1
+
+; RANDOM PRODUCTS
+
+	PRODUCT RANDOM1 = 100
+
+; -------------------- EVENTS AND ACTIVITIES -------------------------------
+
+EVENTS DIVISION.
+
+EVENT EVA_IS_HAPPY
+CONDITIONS
+PRODUCT RANDOM1 = 50
+ACTIONS
+MESSAGE HOW_WOW_WOW
+
+
+
+; EVENTS IN DEPARTING AIRPORT
+
+; (IN DEPARTURE HALL)
+
+	EVENT CHECK_GIRLFRIEND
+		CONDITIONS
+			OBJECT GIRLFRIEND WITH PLAYER
+			PRODUCT GIRLFRIEND_CHECK = 0
+		ACTIONS
+			PRODUCT FRIEND_FOLLOW    = 1
+			PRODUCT GIRLFRIEND_CHECK = 1
+
+	EVENT CHECK_BOYFRIEND
+		CONDITIONS
+			OBJECT BOYFRIEND WITH PLAYER
+			PRODUCT BOYFRIEND_CHECK  = 0
+		ACTIONS
+			PRODUCT FRIEND_FOLLOW    = 1
+			PRODUCT BOYFRIEND_CHECK  = 1
+
+	EVENT CHECK_IN0
+		CONDITIONS
+			ENTRY CHECK
+			OBJECT PLAYER IN CHECKIN ERROR You can't check in here - go to the check-in counter first.
+			OBJECT CHECKINLADY IN CHECKIN ERROR There's nobody an the check-in counter to help you!
+		ACTIONS
+			MESSAGE You tell the lady that you want to check in and have your boarding pass.
+			PRODUCT CHECKED_IN = 0
+
+	EVENT CHECK_IN1
+		CONDITIONS
+			OBJECT PLAYER IN CHECKIN
+			PRODUCT CHECKED_IN = 0
+		ACTIONS
+			MESSAGE The lady says, "Hello. Please put your luggage down and give me your ticket."
+			PRODUCT CHECKED_IN = 1
+
+	EVENT CHECK_IN2
+		CONDITIONS
+			OBJECT PLAYER IN CHECKIN
+			PRODUCT CHECKED_IN = 1
+			OBJECT LUGGAGE WITHIN CHECKINLADY
+			OBJECT TICKET WITHIN CHECKINLADY
+		ACTIONS
+			MESSAGE The lady says, "I am sorry, $LNAME, but you have an overweight in your suitcase. You must remove some things from your suitcase or pay $50 to account for the extra weight."
+			PRODUCT CHECKED_IN = 2
+			OBJECT LUGGAGE WITH PLAYER
+
+	EVENT LITT_REMOVED
+		CONDITIONS
+			OBJECT LUGGAGE WITHIN CHECKINLADY
+			OBJECT LITTERATURE NOTIN LUGGAGE
+		ACTIONS
+			PRODUCT CHECKED_IN = 3
+
+	EVENT PAY_HER
+		CONDITIONS
+			ENTRY PAY
+			OBJECT PLAYER IN CHECKIN
+		ACTIONS
+			MESSAGE You pay the lady $50.
+			PRODUCT CHECKED_IN = 3
+
+	EVENT CHECK_IN3
+		CONDITIONS
+			PRODUCT CHECKED_IN = 3
+		ACTIONS
+			MESSAGE She says, "Thank you very much, $LNAME, here is your boarding pass. Your plane departs soon, so please go to the transit hall now. Have a good trip." She gives you a boarding pass and your ticket back.
+			OBJECT LUGGAGE HIDE
+			OBJECT BOARDING_PASS IN PLAYER
+			OBJECT TICKET IN PLAYER
+         PRODUCT CHECKED_IN = 4
+			PRODUCT TIME + 600
+
+	EVENT GO_TRANSIT
+		CONDITIONS
+			ENTRY GO TRANSIT
+			OBJECT PLAYER IN CHECKIN
+			OBJECT BOARDING_PASS IN PLAYER ERROR You haven't got your boarding pass - you can't go to the transit hall without it.
+			OBJECT LITTERATURE NOTIN PLAYER ERROR You are stopped in the security control. "You can't carry all those books with you," they say, referring to the litterature you have. "You must leave them with someone," you are told.
+		ACTIONS
+			MESSAGE You wave goodbye and take the stairway. Passing security control, you get to the transit hall.
+			PRODUCT FRIEND_FOLLOW = 0
+			OBJECT PLAYER IN TRANSIT1
+
+	EVENT KISS_GIRLFRIEND
+		CONDITIONS
+			ENTRY KISS GIRLFRIEND
+			OBJECT GIRLFRIEND WITH PLAYER ERROR But she isn't here!
+		ACTIONS
+			MESSAGE You tenderly kiss your girlfriend. "Take care," she says.
+
+	EVENT KISS_BOYFRIEND
+		CONDITIONS
+			ENTRY KISS BOYFRIEND
+			OBJECT BOYFRIEND WITH PLAYER ERROR But he isn't here!
+		ACTIONS
+			MESSAGE You tenderly kiss your boyfriend. "Take care," he says.
+
+	EVENT GCHAT2
+		CONDITIONS
+			PRODUCT CHECKED_IN = 4
+			OBJECT GIRLFRIEND WITH PLAYER
+		ACTIONS
+			PRODUCT CHECKED_IN = 5
+			MESSAGE Eva says, "Bye now... write soon, won't you? Give me a kiss, $FNAME!"
+
+	EVENT GCHAT1
+		CONDITIONS
+			PRODUCT CHECKED_IN = 4
+			OBJECT BOYFRIEND WITH PLAYER
+		ACTIONS
+			PRODUCT CHECKED_IN = 5
+			MESSAGE Adam says, "Bye now... write soon, won't you? Give me a kiss, $FNAME!"
+
+	EVENT GCHAT3
+		CONDITIONS
+			ENTRY TAKE CARE
+			OBJECT GIRLFRIEND WITH PLAYER
+		ACTIONS
+			MESSAGE "Of course," she says, "but don't miss your plane. Now go to the transit hall."
+
+	EVENT GCHAT3
+		CONDITIONS
+			ENTRY TAKE CARE
+			OBJECT BOYFRIEND WITH PLAYER
+		ACTIONS
+			MESSAGE "Of course," he says, "but don't miss your plane. Now go to the transit hall."
+
+	EVENT OPEN_CASE
+		CONDITIONS
+			ENTRY OPEN LUGGAGE
+			OBJECT LUGGAGE WITHIN PLAYER ERROR The luggage isn't here.
+		ACTIONS
+			MESSAGE It's now open. You can look inside it to see what's there.
+
+	EVENT CLOSE_CASE
+		CONDITIONS
+			ENTRY CLOSE LUGGAGE
+			OBJECT LUGGAGE WITHIN PLAYER ERROR The luggage isn't here.
+		ACTIONS
+			MESSAGE It's now closed.
+
+
+; (IN TRANSIT HALL)
+
+	EVENT BUY_WINE
+		CONDITIONS
+			ENTRY BUY WINE
+			OBJECT WINE WITHIN PLAYER ERROR There's no wine to buy here.
+			PRODUCT WINE = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the wine.
+			PRODUCT WINE = 1
+			OBJECT WINE IN PLAYER
+
+	EVENT BUY_WHISKY
+		CONDITIONS
+			ENTRY BUY WHISKY
+			OBJECT WHISKY WITHIN PLAYER ERROR There's no whisky to buy here
+			PRODUCT WHISKY = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the whisky.
+			PRODUCT WHISKY = 1
+			OBJECT WHISKY IN PLAYER
+
+	EVENT BUY_CIGARETTES
+		CONDITIONS
+			ENTRY BUY CIGARETTES
+			OBJECT CIGARETTES WITHIN PLAYER ERROR There are no cigarettes to buy here.
+			PRODUCT CIGARETTES = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the cigarettes.
+			PRODUCT CIGARETTES = 1
+			OBJECT CIGARETTES IN PLAYER
+
+	EVENT BUY_CHOC
+		CONDITIONS
+			ENTRY BUY CHOCOLATE
+			OBJECT CHOCOLATE WITHIN PLAYER ERROR There are no chocolates to buy here.
+			PRODUCT CHOCOLATE = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the chocolate.
+			PRODUCT CHOCOLATE = 1
+			OBJECT CHOCOLATE IN PLAYER
+
+	EVENT BUY_PAPER
+		CONDITIONS
+			ENTRY BUY NEWSPAPER
+			OBJECT NEWSPAPER WITHIN PLAYER ERROR There's no newspaper to buy here.
+			PRODUCT NEWSPAPER = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the newspaper.
+			PRODUCT NEWSPAPER = 1
+			OBJECT NEWSPAPER IN PLAYER
+
+	EVENT BUY_BOOK
+		CONDITIONS
+			ENTRY BUY NOVEL
+			OBJECT novel WITHIN PLAYER ERROR What novel?
+			PRODUCT CHOCOLATE = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the novel.
+			PRODUCT NOVEL = 1
+			OBJECT NOVEL IN PLAYER
+
+	EVENT BUY_RADIO
+		CONDITIONS
+			ENTRY BUY RADIO
+			OBJECT RADIO WITHIN PLAYER ERROR What radio?
+			PRODUCT RADIO = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the radio.
+			PRODUCT RADIO = 1
+			OBJECT RADIO IN PLAYER
+
+	EVENT ARREST1
+		CONDITIONS
+			OBJECT WINE IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT WINE = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT WINE HIDE
+
+	EVENT ARREST2
+		CONDITIONS
+			OBJECT WHISKY IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT WHISKY = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT WHISKY HIDE
+
+	EVENT ARREST3
+		CONDITIONS
+			OBJECT CIGARETTES IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT CIGARETTES = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT CIGARETTES HIDE
+
+	EVENT ARREST4
+		CONDITIONS
+			OBJECT CHOCOLATE IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT CHOCOLATE = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT CHOCOLATE HIDE
+
+	EVENT ARREST5
+		CONDITIONS
+			OBJECT NEWSPAPER IN PLAYER
+			OBJECT PLAYER NOTIN BOOKSTORE
+			PRODUCT NEWSPAPER = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT NEWSPAPER HIDE
+
+	EVENT ARREST6
+		CONDITIONS
+			OBJECT NOVEL IN PLAYER
+			OBJECT PLAYER NOTIN BOOKSTORE
+			PRODUCT NOVEL = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT NOVEL HIDE
+
+	EVENT ARREST7
+		CONDITIONS
+			OBJECT RADIO IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT RADIO = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT RADIO HIDE
+
+	EVENT ENDGAME1
+		CONDITIONS
+			OBJECT PLAYER IN PRISON
+		ACTIONS
+			MESSAGE The International Development organisation cannot have crooks on their paylist! You're sacked! Fired!
+			PRODUCT GAME = 0
+
+; (IN AEROPLANE - FLYING)
+
+	EVENT OLDIE_FOLLOWING
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			OBJECT OLD_LADY NOTWITH PLAYER
+		ACTIONS
+			OBJECT OLD_LADY WITH PLAYER
+
+	EVENT FLYING
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 = -1
+		ACTIONS
+			PRODUCT TIMER1 = 0
+			PRODUCT PLANE_ANNOUNCE = 0
+
+	EVENT FLY_MESSAGE1
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 > 60
+			PRODUCT PLANE_ANNOUNCE = 0
+		ACTIONS
+			MESSAGE The plane is taking off...
+			PRODUCT PLANE_ANNOUNCE = 1
+
+	EVENT FLY_MESSAGE2
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 > 600
+			PRODUCT PLANE_ANNOUNCE = 1
+		ACTIONS
+			MESSAGE You hear a male voice: "This is your captain speaking. We'll be landing soon."
+			PRODUCT PLANE_ANNOUNCE = 2
+
+	EVENT FLY_MESSAGE3
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 > 700
+			PRODUCT PLANE_ANNOUNCE = 2
+		ACTIONS
+			MESSAGE You hear a female voice: "We are now landing in Faraway. Please remain in your seat until the plane has come to a complete stop and the FASTEN SEAT BELT signs are off."
+			PRODUCT PLANE_ANNOUNCE = 3
+
+	EVENT FLY_MESSAGE4
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER1 > 800
+			PRODUCT PLANE_ANNOUNCE = 3
+		ACTIONS
+			MESSAGE The FASTEN SEAT BELT sign has come off. You hear a female voice: "You can now leave the plane. Thank you for flying with us, we are looking forward to seeing you again."
+			PRODUCT PLANE_ANNOUNCE = 4
+
+	EVENT ORDER_DRINK
+		CONDITIONS
+			ENTRY ORDER DRINK
+			OBJECT STEWARDESS WITH PLAYER ERROR There's no-one to take orders here.
+			PRODUCT ALCOHOL < 5 ERROR The stewardess refuses. "You've had enough," she says. You do in fact feel a little drunk.
+		ACTIONS
+			MESSAGE You order a drink, and the stewardess brings you one.
+			OBJECT DRINK IN PLAYER
+
+	EVENT DRINK_DRINK
+		CONDITIONS
+			ENTRY DRINK DRINK
+			OBJECT DRINK WITHIN PLAYER ERROR You haven't got a drink!
+		ACTIONS
+			MESSAGE You drink it. Very nice.
+			OBJECT DRINK HIDE
+			PRODUCT ALCOHOL + 1
+
+	EVENT TOO_DRUNK
+		CONDITIONS
+			PRODUCT ALCOHOL = 5
+			OBJECT PLAYER IN PLANE
+		ACTIONS
+			MESSAGE You fall asleep, all the drinks having reached your brain.
+			PRODUCT TIMER1 + 1000
+			PRODUCT ALCOHOL = 0
+
+	EVENT LEAVE_PLANE
+		CONDITIONS
+			ENTRY LEAVE PLANE
+			OBJECT PLAYER IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 4 ERROR The crew intervenes. "You can't leave the plane now," they say, "please remain seated until the plane has come to a complete stop."
+		ACTIONS
+			OBJECT PLAYER IN ARR_HALL
+			PRODUCT TIMER1 = -1
+
+	EVENT FORCELEAVE_PLANE
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 4
+			PRODUCT TIMER1 > 1000
+		ACTIONS
+			MESSAGE You are thrown out of the plane by the stewardess. "Come on now," she says.
+			PRODUCT TIMER1 = -1
+			OBJECT PLAYER IN ARR_HALL
+
+	EVENT WOMAN_LEAVES
+		CONDITIONS
+			OBJECT OLD_LADY IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 4
+		ACTIONS
+			OBJECT OLD_LADY IN ARR_HALL
+
+;   IN THE ARRIVAL HALL
+  EVENT RECEIVE_LOVE1
+    CONDITIONS
+      OBJECT PLAYER IN ARR_HALL
+      PRODUCT LOVE1 = 0
+    ACTIONS
+      MESSAGE A messenger boy comes up to you. "Are you $LNAME? I have a letter for you."
+      PRODUCT LOVE1 = 1
+
+  EVENT BOYCHAT1
+    CONDITIONS
+      ENTRY YES
+      OBJECT PLAYER IN ARR_HALL
+      PRODUCT LOVE1 = 1
+    ACTIONS
+      MESSAGE "Ok," the boy says, here you are." He gives you a letter.
+      OBJECT LOVE1 IN PLAYER
+      PRODUCT LOVE1 = 2
+
+	EVENT MAGIC1
+		CONDITIONS
+			ENTRY MAGIC1
+		ACTIONS
+			OBJECT PLAYER IN outside_off2
+
+;	EVENT ENTER2
+;			CONDITIONS
+;			ENTRY ENTER BUILDING
+;			OBJECT PLAYER IN outside_off2 
+;		ACTIONS	
+;			MESSAGE You enter the building through the obligatory veranda.
+;			OBJECT PLAYER IN VERANDA2
+
+
+; ---------------------------------------------------------
+; -----    CHAPTER 2: WORKING AT THE FIELD OFFICE    ------
+; ---------------------------------------------------------
+
+; ---------------------------------------------------------
+; -----    CHAPTER X: WORKING BY THE VILLAGE   ------------
+; ---------------------------------------------------------
+
+; ---------------------------------------------------------
+; -----    CHAPTER X: WORKING BY THE PROJECT SITE   -------
+; ---------------------------------------------------------
+
+; ---------------------------------------------------------
+; -----         VARIOUS BITS AND PIECES    ----------------
+; ---------------------------------------------------------
+
+	EVENT FOUL_LANGUAGE
+		CONDITIONS
+			ENTRY skit
+		ACTIONS
+			MESSAGE  Om jag vore dig skulle jag  inte 
+anv„nda ett saadant spraak h„r.
+
+	EVENT GIRLFRIEND_FOLLOW_ME
+		CONDITIONS
+			ENTRY flickv„n f”lj mig
+			PRODUCT FRIEND_FOLLOW = 0 ERROR MSG64
+		ACTIONS
+			MESSAGE MSG60
+			PRODUCT FRIEND_FOLLOW = 1
+
+	EVENT GIRLFRIEND_STOP_FOLLOWING
+		CONDITIONS
+			ENTRY FLICKV„N SLUTA MIG
+			PRODUCT FRIEND_FOLLOW = 1 ERROR MSG66
+		ACTIONS
+			MESSAGE MSG70
+			PRODUCT FRIEND_FOLLOW = 0
+
+	EVENT GIRLFRIEND_FOLLOWING
+		CONDITIONS
+			PRODUCT FRIEND_FOLLOW = 1
+			PRODUCT GIRLFRIEND_CHECK = 1
+			OBJECT GIRLFRIEND NOTWITH PLAYER
+		ACTIONS
+			OBJECT GIRLFRIEND WITH PLAYER
+
+	EVENT FOLLOW_GIRLFRIEND
+		CONDITIONS
+			ENTRY F”LJ FLICKV„N
+			OBJECT GIRLFRIEND WASWITH PLAYER ERROR MSG72
+		ACTIONS
+			MESSAGE You follow your Eva, your girlfriend.
+			OBJECT PLAYER WITH GIRLFRIEND
+
+	EVENT BOYFRIEND_FOLLOW_ME
+		CONDITIONS
+			ENTRY POJKV„N F”LJ MIG
+			PRODUCT FRIEND_FOLLOW = 0 ERROR MSG65
+		ACTIONS
+			MESSAGE MSG61
+			PRODUCT FRIEND_FOLLOW = 1
+
+	EVENT BOYFRIEND_STOP_FOLLOWING
+		CONDITIONS
+			ENTRY POJKV„N SLUTA MIG
+			PRODUCT FRIEND_FOLLOW = 1 ERROR MSG67
+		ACTIONS
+			MESSAGE MSG71
+			PRODUCT FRIEND_FOLLOW = 0
+
+	EVENT BOYFRIEND_FOLLOWING
+		CONDITIONS
+			PRODUCT FRIEND_FOLLOW   = 1
+			PRODUCT BOYFRIEND_CHECK = 1
+			OBJECT BOYFRIEND NOTWITH PLAYER
+		ACTIONS
+			OBJECT BOYFRIEND WITH PLAYER
+
+	EVENT FOLLOW_BOYFRIEND
+		CONDITIONS
+			ENTRY F”LJ POJKV„N
+			OBJECT BOYFRIEND WASWITH PLAYER ERROR MSG73
+		ACTIONS
+			MESSAGE You follow your Adam, your boyfriend.
+			OBJECT PLAYER WITH BOYFRIEND
+
+	EVENT TIME1
+		CONDITIONS
+			ENTRY TIME
+		ACTIONS
+			MESSAGE It's now $TIME.
+
+	EVENT TIME2
+		CONDITIONS
+			ENTRY VAD „R KLOCKAN
+		ACTIONS
+			MESSAGE den „r nu $TIME.
+
+; ---------------------- SYSTEM VARIABLES ----------------------------------
+
+SYSTEM DIVISION.
+
+	INITIAL    DEPT_HALL				; Initial location of the player
+
+	LOOK       TITTA				; Verb for looking around
+	INVENTORY  INVENTARIE          ; Verb for examining held objects
+	GO         GAA                 ; Verb for moving around
+	QUIT       AVSLUTA               ; Verb for ending game
+	GET        TAG				; Verb for taking things
+	PUT        L„GG                ; Verb for putting things down
+	HELP       HJ„LP               ; Verb for getting help on things
+	WAIT       V„NTA              ; Verb for waiting
+	GIVE       GE				; Verb for giving things to people
+	AND        OCH                ; Adverb for combining things
+	OR         ELLER                ; Adverb for combining things
+	ALL        ALLA                ; Noun for referring to everything
+	IT         DEN					; Noun for referring to last noun again
+	WHAT       VAD					; Noun for referring to unknown objects
+	YOU        DU
+
+					; Noun for referring to the player
+	IN         I						; Preposition for referring to insides
+	OUT        UTE                ; Preposition for referring to insides
+
+; ------------------------- HELP INFORMATION -------------------------------
+
+; HELPSCREEN1
+;
+; TEXT..TEXT..TEXT..
+
+

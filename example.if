@@ -1,0 +1,273 @@
+; Script "The Art Of Coffee-Making"
+;
+; Written by the Dane-Brain... or should that be Brain-Drain???
+;
+
+
+; ------------------------ VOCABULARY --------------------------------------
+
+VOCABULARY
+
+	VERBS
+		MAKE PRODUCE BREW
+		DRINK CONSUME SWALLOW
+		LOOK EXAMINE
+		INVENTORY
+		GO ENTER WALK
+		QUIT
+		GET TAKE PICK
+		PUT DROP
+		POUR
+		HELP
+		EAT
+		WAIT
+		WHO
+		WHY
+		I
+
+	NOUNS
+		COFFEE COFFE COFEE
+		MACHINE
+		KITCHEN KICHEN
+		TEA TEE
+		POT
+		LEAVES
+		ALL EVERYTHING LOT
+		ROOM
+		IT THAT HE SHE HER HIM
+		CUP
+		BIRD SPARROW
+
+	ADJECTIVES
+		GROUND PULVERIZED
+		CLOSELY CAREFULLY
+		LIVING
+		FULL FILLED
+      EMPTY
+
+	ARTICLES
+		THE
+		A AN
+		YOUR
+
+	ADVERBS
+		AND
+		OR
+
+
+; ----------------- OBJECTS, PLACES AND THINGS -----------------------------
+
+OBJECTS
+
+	OBJECT KITCHEN
+		BRIEF your kitchen
+		VERBOSE You are in the kitchen. This is a small rectangular room cluttered with shelves and cupboards. On the kitchen table is a lot of kitchen tools. From here, you can go to the living room.
+		GRAPHIC KITCHEN.PIC
+
+	OBJECT COFFEE_MACHINE
+		BRIEF the coffee machine
+		VERBOSE You see a small coffee machine, of poor design and technology. There is no coffee in the machine.
+		PARENT KITCHEN
+		GRAPHIC LIVING.PIC
+
+	OBJECT FULL_COFFEE_MACHINE
+		BRIEF the coffee machine (with coffee)
+		VERBOSE You see the small coffee machine, which contains some coffee.
+
+	OBJECT GROUND_COFFEE
+		BRIEF some ground coffee
+		VERBOSE You see some freshly ground coffee, darkly roasted.
+		PARENT KITCHEN
+
+	OBJECT COFFEE_CUP
+		BRIEF a cup of coffee
+		VERBOSE You see a nice cup of coffee. It looks nice, anyway.
+
+	OBJECT CUP
+		BRIEF an empty cup
+		VERBOSE You see a completely empty cup. There is nothing in it.
+		PARENT KITCHEN
+
+	OBJECT TEA_CUP
+		BRIEF a nice cup of tea
+		VERBOSE You see a nice cup of tea. The tea looks a bit weak, though.
+
+	OBJECT TEA_POT
+		BRIEF a tea pot
+		VERBOSE You see an empty pot of tea.
+		PARENT KITCHEN
+
+	OBJECT FULL_TEA_POT
+		BRIEF a tea pot (with tea)
+		VERBOSE You see a full pot of tea.
+
+	OBJECT TEA_LEAVES
+		BRIEF some Earl Grey tea leaves
+		VERBOSE You see about an ounce of first quality Earl Grey leaves, freah and ready for use.
+		PARENT KITCHEN
+
+	OBJECT LIVING_ROOM
+		BRIEF The living room
+		VERBOSE You are in the living room. It is a featureless room.
+		GRAPHIC LIVING.PIC
+
+	OBJECT BIRD
+		BRIEF a bird
+		VERBOSE You see a small bird. It look like a sparrow.
+
+; ---------------------- ACTIVITY PRODUCTS ---------------------------------
+
+PRODUCTS
+
+	PRODUCT COFFEE = 0
+	PRODUCT TIMER1 = -1
+	PRODUCT RANDOM_BIRD = 5
+	PRODUCT BIRD = 0
+
+; -------------------- EVENTS AND ACTIVITIES -------------------------------
+
+EVENTS
+
+	EVENT COFFEEMAKING
+		CONDITIONS
+			ENTRY MAKE COFFEE
+			OBJECT COFFEE_MACHINE WITHIN PLAYER ERROR How can you make coffee without a coffee machine?
+			OBJECT GROUND_COFFEE WITHIN PLAYER ERROR You have no ground coffee.
+
+		ACTIONS
+			MESSAGE The coffee is brewing. Will be ready in a moment.
+			PRODUCT TIMER1 = 0
+
+	EVENT COFFEEREADY
+		CONDITIONS
+			OBJECT COFFEE_MACHINE WITHIN PLAYER
+			PRODUCT TIMER1 = 5
+
+		ACTIONS
+			MESSAGE The coffee is ready. The coffee machine now contains five cups of fresh coffee.
+			OBJECT COFFEE_MACHINE HIDE
+			OBJECT FULL_COFFEE_MACHINE WITH PLAYER
+			OBJECT GROUND_COFFEE HIDE
+			PRODUCT COFFEE = 5
+			PRODUCT TIMER1 = -1
+
+	EVENT COFFEEPOURING
+		CONDITIONS
+			ENTRY POUR COFFEE
+			OBJECT FULL_COFFEE_MACHINE WITHIN PLAYER ERROR There isn't a full coffee machine here.
+			OBJECT CUP WITHIN PLAYER ERROR There is no empty cup to pour the coffee into.
+			PRODUCT COFFEE > 0 ERROR There's no more coffee!
+
+		ACTIONS
+			MESSAGE You pour the coffee from the machine into the cup.
+			OBJECT COFFEE_CUP WITH CUP
+			OBJECT CUP HIDE
+			PRODUCT COFFEE - 1
+
+
+	EVENT COFFEEDRINKING
+		CONDITIONS
+			ENTRY DRINK COFFEE
+			OBJECT COFFEE_CUP WITHIN PLAYER ERROR But you have no coffee!
+
+		ACTIONS
+			MESSAGE You drink the coffee. Tastes awful!
+			OBJECT CUP WITH COFFEE_CUP
+			OBJECT COFFEE_CUP HIDE
+
+	EVENT TEAMAKING
+		CONDITIONS
+			ENTRY MAKE TEA
+			OBJECT TEA_LEAVES WITHIN PLAYER ERROR You've got no tea leaves.
+			OBJECT TEA_POT WITHIN PLAYER ERROR There is no tea pot in which to make the tea.
+
+		ACTIONS
+			MESSAGE The tea is now ready - steaming hot in the pot.
+			OBJECT FULL_TEA_POT WITH TEA_POT
+			OBJECT TEA_LEAVES HIDE
+			OBJECT TEA_POT HIDE
+
+	EVENT TEAPOURING
+		CONDITIONS
+			ENTRY POUR TEA
+			OBJECT FULL_TEA_POT WITHIN PLAYER ERROR The tea pot is empty.
+			OBJECT CUP WITHIN PLAYER ERROR There isn't an empty cup to pour the tea into.
+
+		ACTIONS
+			MESSAGE You pour the tea from the pot into the cup.
+			OBJECT TEA_CUP WITH CUP
+			OBJECT CUP HIDE
+
+
+	EVENT TEADRINKING
+		CONDITIONS
+			ENTRY DRINK TEA
+			OBJECT TEA_CUP WITHIN PLAYER ERROR There isn't a cup of tea here.
+
+		ACTIONS
+			MESSAGE You drink the tea. Hmm.. Perhaps the coffee is better?
+			OBJECT CUP WITH TEA_CUP
+			OBJECT TEA_CUP HIDE
+
+	EVENT ENTER_LIVING_ROOM
+		CONDITIONS
+			ENTRY GO LIVING
+			OBJECT PLAYER IN KITCHEN
+
+		ACTIONS
+			MESSAGE You go into the living room.
+			OBJECT PLAYER IN LIVING_ROOM
+
+	EVENT ENTER_KITCHEN
+		CONDITIONS
+			ENTRY GO KITCHEN
+			OBJECT PLAYER IN LIVING_ROOM
+
+		ACTIONS
+			MESSAGE You go into the kitchen.
+			OBJECT PLAYER IN KITCHEN
+
+	EVENT BIRD_ENTRY
+		CONDITIONS
+			PRODUCT BIRD = 0
+			PRODUCT RANDOM_BIRD = 3
+
+		ACTIONS
+			MESSAGE A bird suddenly flies into the room
+			OBJECT BIRD WITH PLAYER
+			PRODUCT BIRD = 1
+
+	EVENT WHY
+		CONDITIONS
+			ENTRY WHY
+		ACTIONS
+			MESSAGE I really can't help you with that question.
+
+	EVENT WHO
+		CONDITIONS
+			ENTRY WHO
+		ACTIONS
+			MESSAGE You should know.
+
+
+
+; ---------------------- SYSTEM VARIABLES ----------------------------------
+
+SYSTEM
+
+	INITIAL    KITCHEN				; Initial location of the player
+
+	LOOK       LOOK					; Verb for looking around
+	INVENTORY  INVENTORY          ; Verb for examining held objects
+	GO         GO                 ; Verb for moving around
+	QUIT       QUIT               ; Verb for ending game
+	GET        GET						; Verb for taking things
+	PUT        PUT                ; Verb for putting things down
+	HELP       HELP               ; Verb for getting help on things
+	WAIT       WAIT               ; Verb for waiting
+	AND        AND                ; Adverb for combining things
+	OR         OR                 ; Adverb for combining things
+	ALL        ALL                ; Noun for refering to everything
+	IT         IT						; Noun for refering to last noun again
+
+; END!

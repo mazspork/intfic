@@ -1,0 +1,701 @@
+; ******** Interactive Fiction Description File ********
+
+;    SCENE: AIRPORT COMPLEX
+;
+;   AUTHOR: MAZ
+;
+; MODIFIED: 16/10/90
+
+
+OBJECTS DIVISION -----------------------------------------------------------
+
+; LOCATIONS
+
+	OBJECT CHECKIN STATIC
+		BRIEF1 the check-in counter
+		VERBOSE You are at the check-in counter. You can go to the transit hall and to the departure hall.
+		GRAPHIC CHECKIN.PIC
+
+	OBJECT TRANSIT1 STATIC
+		BRIEF1 the transit hall
+		VERBOSE You are in the transit hall. You can go to the tax-free shop or to the gates.
+		EXITS GATE TAXFREE
+		GRAPHIC TRANSIT.PIC
+
+	OBJECT GATE STATIC
+		BRIEF1 gate no. 24
+		VERBOSE You are by gate no. 24. You can embark the plane.
+		EXITS TRANSIT1 PLANE
+		GRAPHIC GATE.PIC
+
+	OBJECT TAXFREE STATIC
+		BRIEF1 the tax-free shop
+		VERBOSE You are in the tax-free shop.
+		EXITS TRANSIT1 GATE
+		GRAPHIC TAXFREE.PIC
+
+	OBJECT PRISON STATIC
+		BRIEF1 the airport prison
+		VERBOSE You are in the airport prison. You can't get out...
+		GRAPHIC PRISON.PIC
+
+	OBJECT PLANE STATIC
+		BRIEF1 the plane
+		VERBOSE You are inside the plane, seated.
+		GRAPHIC PLANE.PIC
+
+	OBJECT DEPT_HALL STATIC
+		BRIEF1 the arrival hall
+		VERBOSE You are in the arrival hall in Faraway. You must go through the customs before you can leave the airport and enter the country.
+		EXITS CUSTOMS_DESK
+		GRAPHIC DEPTHALL.PIC
+
+	OBJECT CUSTOMS_DESK STATIC
+		BRIEF1 the customs
+		VERBOSE You are at the customs desk on your way to the street outside the airport building.
+		EXITS DEPT_HALL
+		GRAPHIC CUSTOMS.PIC
+
+	OBJECT AIRPORT_STREET STATIC
+		BRIEF1 the main street
+		VERBOSE You are in a street in Faraway besides the airport.
+		EXITS DEPT_HALL
+		GRAPHIC STREETA.PIC
+
+; THINGS
+
+	OBJECT NEWSPAPER
+		BRIEF1 a newspaper
+		BRIEF2 the newspaper
+		VERBOSE You read the paper. There is an interesting article about deserts, which says that given a highland area, ample water for tree growth will always exist two feet below the ground.
+		PARENT TAXFREE
+
+	OBJECT RADIO
+		BRIEF1 a short-wave radio
+		BRIEF2 the radio
+		VERBOSE The radio can pick up all major radio broadcasts.
+		PARENT TAXFREE
+
+	OBJECT WINE
+		BRIEF1 a bottle of wine (non-alcoholic)
+		BRIEF2 the wine
+		VERBOSE It's a bottle of Chablos '84.
+		PARENT TAXFREE
+
+	OBJECT CHOCOLATE
+		BRIEF1 some chocolate
+		BRIEF2 the chocolate
+		VERBOSE The chocolate, called Toblertwo, looks nourishing.
+		PARENT TAXFREE
+
+	OBJECT GUM
+		BRIEF1 a packet of chewing gum (sugar-free)
+		BRIEF2 the chewing gum
+		VERBOSE The gum looks like it's got more colouring agents than actual gum, and smells like a flower shop. Wonder how it tastes?
+		PARENT TAXFREE
+
+	OBJECT LUGGAGE
+		BRIEF1 your luggage
+		BRIEF2 the luggage
+		VERBOSE You see your luggage - a large bag with all your personal things in it. You can LOOK INSIDE to see what's there.
+		PARENT PLAYER
+
+	OBJECT TICKET
+		BRIEF1 your ticket
+		BRIEF2 the ticket
+		VERBOSE It reads: "Flight no. AB123 for Faraway at 1-dec-90 14:45"
+		PARENT PLAYER
+
+	OBJECT BOARDING_PASS
+		BRIEF1 the boarding pass
+		VERBOSE It reads: $LNAME, $COUNTRY. Seat no. 32E.
+
+	OBJECT PASSPORT
+		BRIEF1 your passport
+		BRIEF2 the passport
+		VERBOSE Your passport carries one of the worst photographs of you ever taken. It also has an entry visa for Faraway, which you must show on your entry to the country.
+		PARENT PLAYER
+
+	OBJECT LITTERATURE
+		BRIEF1 a heavy encyclopaedic guide book
+		BRIEF2 the guide book
+		VERBOSE This book will give you information about living conditions in faraway, hard data on reforestation and all related topics. You just type CONSULT GUIDEBOOK ON <topic>, where the <topic> is what you want to know about.
+		PARENT LUGGAGE
+
+	OBJECT DRINK
+		BRIEF1 a drink
+		BRIEF2 the drink
+		VERBOSE It's 5 cl of a liquor which looks very nice.
+
+	OBJECT LOVE1
+		BRIEF1 a letter
+		BRIEF2 the letter
+		VERBOSE It reads: "Dear $FNAME! I miss you badly! I send you the book you couldn't carry with you on the plane."
+		GRAPHIC LOVE1.PIC
+
+	OBJECT LOVE2
+		BRIEF1 a letter
+		BRIEF2 the letter
+		VERBOSE It reads: "Dear $FNAME! I miss you badly! I hope everything is well with you."
+		GRAPHIC LOVE1.PIC
+
+; PEOPLE
+
+	OBJECT CHECKINLADY ACTOR
+		BRIEF1 the check-in lady
+		VERBOSE She looks like the kind of person that tells the same thing to 500 people every day, expecting the same answer...
+		PARENT CHECKIN
+
+	OBJECT TAXFREESELLER ACTOR
+		BRIEF1 the tax-free sales person
+		VERBOSE The sales person looks like he wants to go home.
+		PARENT TAXFREE
+
+	OBJECT GIRLFRIEND ACTOR
+		BRIEF1 Eva (your girlfriend)
+		BRIEF2 Eva
+		VERBOSE You know what she looks like!
+
+	OBJECT BOYFRIEND ACTOR
+		BRIEF1 Adam (your boyfriend)
+		BRIEF2 Adam
+		VERBOSE You know what he looks like!
+
+	OBJECT OLD_LADY ACTOR
+		BRIEF1 an elderly woman
+		BRIEF2 the elderly woman
+		VERBOSE She's a gentle looking elderly woman with intelligent, deep brown eyes and snow-white hair. She is wearing clothes as was she still living in the fifties.
+		PARENT PLANE
+
+	OBJECT STEWARDESS ACTOR
+		BRIEF1 the stewardess
+		VERBOSE She's a fair-haired, blue-eyed beauty. But she looks tough.
+		PARENT PLANE
+
+	OBJECT CUSTOMS_MAN ACTOR
+		BRIEF1 an officer
+		VERBOSE You won't trick this guy!
+		PARENT CUSTOMS_DESK
+
+
+PRODUCTS DIVISION ----------------------------------------------------------
+
+; GENERIC PRODUCTS
+
+	PRODUCT WINE              = 0		; These products tell if you've paid
+	PRODUCT GUM               = 0		; (checking for stealing)
+	PRODUCT CHOCOLATE         = 0
+	PRODUCT NEWSPAPER         = 0
+	PRODUCT RADIO             = 0
+
+	PRODUCT WEIGHT_OK         = 0    ; Is wheigt ok?
+	PRODUCT CHECKED_IN        = 0		; Have you checked in yet?
+	PRODUCT PLANE_ANNOUNCE    = 0
+	PRODUCT AIRPORT_ANNOUNCE  = 0		; Counts announcements in airport
+	PRODUCT ALCOHOL           = 0    ; How much alcohol in the blood
+	PRODUCT OLD_LADY_KNOWS    = 0		; Does the old woman know who you are?
+
+	PRODUCT CUSTOMS_CLEARED   = 0
+
+; TIMER PRODUCTS
+
+	PRODUCT TIMER_ANNOUNCE_A  = 0 	; Times announcements in airport
+
+; RANDOM PRODUCTS
+
+
+EVENTS DIVISION ------------------------------------------------------------
+
+
+; (IN THE DEPARTURE HALL)
+; =======================
+
+	EVENT DEPT_ANNOUNCE1
+		CONDITIONS
+			PRODUCT TIMER_ANNOUNCE_A > 600
+			PRODUCT AIRPORT_ANNOUNCE = 0
+		ACTIONS
+			MESSAGE You hear a female voice: "Flight no. AB123 for Faraway at 14:45 is now boarding at gate no. 24."
+			PRODUCT AIRPORT_ANNOUNCE = 1
+
+	EVENT DEPT_ANNOUNCE2
+		CONDITIONS
+			PRODUCT TIMER_ANNOUNCE_A > 1200
+			PRODUCT AIRPORT_ANNOUNCE = 1
+		ACTIONS
+			MESSAGE You hear a female voice: "Last call for flight no. AB123 for faraway, gate no. 24. Passengers are requested to go to the gate immediately."
+			PRODUCT AIRPORT_ANNOUNCE = 2
+
+	EVENT DEPT_ANNOUNCE3
+		CONDITIONS
+			PRODUCT TIMER_ANNOUNCE_A > 1300
+			PRODUCT AIRPORT_ANNOUNCE = 2
+		ACTIONS
+			MESSAGE You hear a female voice: "Passenger $LNAME from $COUNTRY - your plane is departing in a few moments, please go to gate no. 24 immediately."
+			PRODUCT AIRPORT_ANNOUNCE = 3
+
+	EVENT GOT_TO_PLANE
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT TIMER_ANNOUNCE_A > 0
+		ACTIONS
+			PRODUCT TIMER_ANNOUNCE_A = -1
+
+	EVENT MISSED_PLANE
+		CONDITIONS
+			PRODUCT TIMER_ANNOUNCE_A > 1400
+		ACTIONS
+			MESSAGE You have missed the plane. The International Development Organisation cannot have sloppy people on their payroll. You're sacked! Fired!
+			PRODUCT GAME = 0
+
+	EVENT CHECK_IN0
+		CONDITIONS
+			ENTRY CHECK
+			OBJECT PLAYER IN CHECKIN ERROR You can't check in here - go to the check-in counter first.
+			OBJECT CHECKINLADY IN CHECKIN ERROR There's nobody an the check-in counter to help you!
+		ACTIONS
+			MESSAGE You tell the lady that you want to check in and have your boarding pass.
+			PRODUCT CHECKED_IN = 0
+
+	EVENT CHECK_IN1
+		CONDITIONS
+			OBJECT PLAYER IN CHECKIN
+			PRODUCT CHECKED_IN = 0
+		ACTIONS
+			MESSAGE The lady says, "Hello. Please put your luggage down and give me your ticket."
+			PRODUCT CHECKED_IN = 1
+
+	EVENT CHECK_IN2
+		CONDITIONS
+			OBJECT PLAYER IN CHECKIN
+			PRODUCT CHECKED_IN = 1
+			OBJECT LUGGAGE WITHIN CHECKINLADY
+			OBJECT TICKET WITHIN CHECKINLADY
+		ACTIONS
+			MESSAGE The lady says, "I am sorry, $LNAME, but you have overweight in your suitcase. You must remove some things from your suitcase or pay $50 to account for the extra weight."
+			PRODUCT CHECKED_IN = 2
+			OBJECT LUGGAGE WITH PLAYER
+
+	EVENT LITT_REMOVED
+		CONDITIONS
+			OBJECT LUGGAGE WITHIN CHECKINLADY
+			OBJECT LITTERATURE NOTIN LUGGAGE
+			PRODUCT CHECKED_IN = 2
+		ACTIONS
+			MESSAGE An elderly woman walks by towards the transit hall, looking with interest at all your books.
+			PRODUCT CHECKED_IN = 3
+			PRODUCT OLD_LADY_KNOWS = 1
+
+	EVENT PAY_HER
+		CONDITIONS
+			ENTRY PAY
+			OBJECT PLAYER IN CHECKIN
+			PRODUCT CHECKED_IN = 2
+		ACTIONS
+			MESSAGE You pay the check-in lady $50, while an elderly woman walks by towards the transit hall.
+			PRODUCT CHECKED_IN = 3
+
+	EVENT CHECK_IN3
+		CONDITIONS
+			PRODUCT CHECKED_IN = 3
+		ACTIONS
+			MESSAGE The check-in lady says: "Thank you, here is your boarding pass. Your plane departs from gate 24, so please go to the transit hall now."
+			OBJECT LUGGAGE in CAR
+			OBJECT BOARDING_PASS IN PLAYER
+			OBJECT TICKET IN PLAYER
+      PRODUCT CHECKED_IN = 100
+			PRODUCT TIME + 600
+
+	EVENT GO_TRANSIT
+		CONDITIONS
+			ENTRY GO TRANSIT
+			OBJECT PLAYER IN CHECKIN
+			OBJECT BOARDING_PASS IN PLAYER ERROR You haven't got your boarding pass - you can't go to the transit hall without it.
+			OBJECT LITTERATURE NOTIN PLAYER ERROR You are stopped in the security control. "You can't take that book with you as hand luggage - it's simply too large. You must leave it here with someone".
+		ACTIONS
+			MESSAGE You wave goodbye and take the stairway. Passing security control, you get to the transit hall.
+			PRODUCT FRIEND_FOLLOW = 0
+			OBJECT PLAYER IN TRANSIT1
+
+	EVENT KISS_GIRLFRIEND
+		CONDITIONS
+			ENTRY KISS GIRLFRIEND
+			OBJECT GIRLFRIEND WITH PLAYER ERROR But she isn't here!
+		ACTIONS
+			MESSAGE You tenderly kiss your girlfriend. "Take care," she says.
+
+	EVENT KISS_BOYFRIEND
+		CONDITIONS
+			ENTRY KISS BOYFRIEND
+			OBJECT BOYFRIEND WITH PLAYER ERROR But he isn't here!
+		ACTIONS
+			MESSAGE You tenderly kiss your boyfriend. "Take care," he says.
+
+	EVENT GCHAT2
+		CONDITIONS
+			PRODUCT CHECKED_IN = 4
+			OBJECT GIRLFRIEND WITH PLAYER
+		ACTIONS
+			PRODUCT CHECKED_IN = 5
+			MESSAGE Eva says, "Take care, $FNAME. Looking forward to seeing you again."
+
+	EVENT GCHAT1
+		CONDITIONS
+			PRODUCT CHECKED_IN = 4
+			OBJECT BOYFRIEND WITH PLAYER
+		ACTIONS
+			PRODUCT CHECKED_IN = 5
+			MESSAGE Adam says, "Take care, $FNAME. Looking forward to seeing you again."
+
+	EVENT GCHAT3
+		CONDITIONS
+			ENTRY TAKE CARE
+			OBJECT GIRLFRIEND WITH PLAYER
+		ACTIONS
+			MESSAGE "Of course," she says, "but don't miss your plane. Now go to the transit hall."
+
+	EVENT GCHAT3
+		CONDITIONS
+			ENTRY TAKE CARE
+			OBJECT BOYFRIEND WITH PLAYER
+		ACTIONS
+			MESSAGE "Of course," he says, "but don't miss your plane. Now go to the transit hall."
+
+	EVENT OPEN_CASE
+		CONDITIONS
+			ENTRY OPEN LUGGAGE
+			OBJECT LUGGAGE WITHIN PLAYER ERROR The luggage isn't here.
+		ACTIONS
+			MESSAGE It's now open. You can look inside it to see what's there.
+
+	EVENT CLOSE_CASE
+		CONDITIONS
+			ENTRY CLOSE LUGGAGE
+			OBJECT LUGGAGE WITHIN PLAYER ERROR The luggage isn't here.
+		ACTIONS
+			MESSAGE It's now closed.
+
+; (IN THE TRANSIT HALL)
+; =====================
+
+	EVENT BUY_WINE
+		CONDITIONS
+			ENTRY BUY WINE
+			OBJECT WINE WITHIN PLAYER ERROR There's no wine to buy here.
+			PRODUCT WINE = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the wine.
+			PRODUCT WINE = 1
+			OBJECT WINE IN PLAYER
+
+	EVENT BUY_GUM
+		CONDITIONS
+			ENTRY BUY CHEWING GUM
+			OBJECT GUM WITHIN PLAYER ERROR There is no chewing gum to buy here.
+			PRODUCT GUM = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the gum.
+			PRODUCT GUM = 1
+			OBJECT GUM IN PLAYER
+
+	EVENT BUY_CHOC
+		CONDITIONS
+			ENTRY BUY CHOCOLATE
+			OBJECT CHOCOLATE WITHIN PLAYER ERROR There are no chocolates to buy here.
+			PRODUCT CHOCOLATE = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the chocolate.
+			PRODUCT CHOCOLATE = 1
+			OBJECT CHOCOLATE IN PLAYER
+
+	EVENT BUY_PAPER
+		CONDITIONS
+			ENTRY BUY NEWSPAPER
+			OBJECT NEWSPAPER WITHIN PLAYER ERROR There's no newspaper to buy here.
+			PRODUCT NEWSPAPER = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the newspaper.
+			PRODUCT NEWSPAPER = 1
+			OBJECT NEWSPAPER IN PLAYER
+
+	EVENT BUY_RADIO
+		CONDITIONS
+			ENTRY BUY RADIO
+			OBJECT RADIO WITHIN PLAYER ERROR What radio?
+			PRODUCT RADIO = 0 ERROR MSG63
+		ACTIONS
+			MESSAGE You buy the radio.
+			PRODUCT RADIO = 1
+			OBJECT RADIO IN PLAYER
+
+	EVENT ARREST1
+		CONDITIONS
+			OBJECT WINE IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT WINE = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT WINE HIDE
+
+	EVENT ARREST3
+		CONDITIONS
+			OBJECT GUM IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT GUM = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT GUM HIDE
+
+	EVENT ARREST4
+		CONDITIONS
+			OBJECT CHOCOLATE IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT CHOCOLATE = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT CHOCOLATE HIDE
+
+	EVENT ARREST5
+		CONDITIONS
+			OBJECT NEWSPAPER IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT NEWSPAPER = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT NEWSPAPER HIDE
+
+	EVENT ARREST7
+		CONDITIONS
+			OBJECT RADIO IN PLAYER
+			OBJECT PLAYER NOTIN TAXFREE
+			PRODUCT RADIO = 0
+		ACTIONS
+			MESSAGE MSG62
+			OBJECT PLAYER IN PRISON
+			OBJECT RADIO HIDE
+
+	EVENT ENDGAME1
+		CONDITIONS
+			OBJECT PLAYER IN PRISON
+		ACTIONS
+			MESSAGE The International Development organisation cannot have crooks on their payroll! You're sacked! Fired!
+			PRODUCT GAME = 0
+
+; (IN THE AEROPLANE - FLYING)
+; ===========================
+
+	EVENT OLDIE_FOLLOWING
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			OBJECT OLD_LADY IN GATE
+		ACTIONS
+			OBJECT OLD_LADY WITH PLAYER
+
+	EVENT FLY_MESSAGE3
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 3
+		ACTIONS
+			MESSAGE You hear a female voice: "We are now landing in Faraway. The plane smoothly lands and you disembark the plane."
+			PRODUCT PLANE_ANNOUNCE = 4
+			OBJECT PLAYER IN DEPT_HALL
+
+	EVENT FLY_MESSAGE2
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 2
+		ACTIONS
+			MESSAGE After about 8 hours, You hear a male voice: "This is your captain speaking. We'll be landing soon."
+			PRODUCT PLANE_ANNOUNCE = 3
+
+	EVENT FLY_MESSAGE1
+		CONDITIONS
+			OBJECT PLAYER IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 0
+		ACTIONS
+			MESSAGE As the plane is taxiing for the runway and taking off, you hear a male voice: "This is your captain speaking. Welcome aboard this flight AB123 for Faraway this afternoon. The flight time is estimated to be around 8 hours."
+			PRODUCT PLANE_ANNOUNCE = 1
+
+	EVENT LEAVE_PLANE
+		CONDITIONS
+			ENTRY LEAVE
+			OBJECT PLAYER IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 4 ERROR The crew intervenes. "You can't leave the plane now," they say, "please remain seated until the plane has come to a complete stop."
+		ACTIONS
+			OBJECT PLAYER IN DEPT_HALL
+
+	EVENT WOMAN_LEAVES1
+		CONDITIONS
+			OBJECT OLD_LADY IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 4
+			PRODUCT OLD_LADY_KNOWS > 0
+		ACTIONS
+			MESSAGE Elanor Fredericksberg, the elderly woman, wakes up and tells you that she'll be seing you in about an hour outside the airport buildings. "Bye," she shouts as she takes her handbag and wanders off.
+			OBJECT OLD_LADY IN DEPT_HALL
+
+	EVENT WOMAN_LEAVES2
+		CONDITIONS
+			OBJECT OLD_LADY IN PLANE
+			PRODUCT PLANE_ANNOUNCE = 4
+			PRODUCT OLD_LADY_KNOWS = 0
+		ACTIONS
+			MESSAGE The elderly woman wakes up.
+			OBJECT OLD_LADY IN DEPT_HALL
+
+	EVENT WOMANDOESNTKNOW
+		CONDITIONS
+			PRODUCT PLANE_ANNOUNCE = 1
+			PRODUCT OLD_LADY_KNOWS = 0
+		ACTIONS
+			PRODUCT PLANE_ANNOUNCE = 2                      
+
+	EVENT WOMANCHAT1
+		CONDITIONS
+			PRODUCT PLANE_ANNOUNCE = 1
+			PRODUCT OLD_LADY_KNOWS = 1
+			OBJECT PLAYER IN PLANE
+			OBJECT PLAYER WITH OLD_LADY
+		ACTIONS
+			MESSAGE The elderly woman turns to you. "Hello, " she says. "I hope you don't mind, but I couldn't help noticing all your books on development issues. Are you an IDO consultant?", she asks.
+			PRODUCT OLD_LADY_KNOWS = 2
+
+	EVENT WOMANCHAT2
+		CONDITIONS
+			ENTRY YES
+			PRODUCT OLD_LADY_KNOWS = 2
+		ACTIONS
+			MESSAGE "That's a coincidence," she exclaims. "My name is Elanor Fredericksberg, and I am the wife of the IDO resident representative in Faraway. You must be $LNAME, right?"
+			PRODUCT OLD_LADY_KNOWS = 3
+
+	EVENT WOMANCHAT3
+		CONDITIONS
+			ENTRY NO
+			PRODUCT OLD_LADY_KNOWS = 2
+		ACTIONS
+			MESSAGE "Ah, well. Sorry," she says.
+			PRODUCT OLD_LADY_KNOWS = 0
+			PRODUCT PLANE_ANNOUNCE = 2
+
+	EVENT WOMANCHAT4
+		CONDITIONS
+			ENTRY YES
+			PRODUCT OLD_LADY_KNOWS = 3
+		ACTIONS
+         MESSAGE "I thought so. My husband has told me about you. Listen, if there is anything I can do for you, just let me know. Faraway is a rather tricky country for newcomers, and people often get very lost out there. Let's have a talk at the IDO office sometime."
+			PRODUCT OLD_LADY_KNOWS = 4
+
+	EVENT WOMANCHAT
+		CONDITIONS
+			PRODUCT OLD_LADY_KNOWS = 4
+		ACTIONS
+			MESSAGE She continues, "Right, then. We'll be seeing more of each other, I hope. Anyway, I've been awake now for more than 24 hours, must catch up on my sleep." Her eyes are getting smaller, and she turns around and goes to sleep.
+			PRODUCT OLD_LADY_KNOWS = -1
+			PRODUCT PLANE_ANNOUNCE = 2
+
+	EVENT WOMANCHAT6
+		CONDITIONS
+			ENTRY WOMAN
+			OBJECT PLAYER WITH OLD_LADY
+			PRODUCT OLD_LADY_KNOWS = -1 ERROR She's asleep and can't hear you.
+		ACTIONS
+			MESSAGE You chat with the elderly lady.
+
+	EVENT FASTEN_BELTS
+		CONDITIONS
+			ENTRY FASTEN SEAT
+			OBJECT PLAYER IN PLANE
+		ACTIONS
+			MESSAGE Your seat belt is now fastened.
+
+	EVENT ORDER_DRINK
+		CONDITIONS
+			ENTRY ORDER DRINK
+			OBJECT STEWARDESS WITH PLAYER ERROR There's no-one to take orders here.
+			PRODUCT ALCOHOL < 5 ERROR The stewardess refuses. "You've had enough," she says. You do in fact feel a little drunk.
+		ACTIONS
+			MESSAGE You order a drink, and the stewardess brings you one.
+			OBJECT DRINK IN PLAYER
+
+	EVENT DRINK_DRINK
+		CONDITIONS
+			ENTRY DRINK DRINK
+			OBJECT DRINK WITHIN PLAYER ERROR You haven't got any drink!
+		ACTIONS
+			MESSAGE You drink it. Very nice.
+			OBJECT DRINK HIDE
+			PRODUCT ALCOHOL + 1
+
+	EVENT TOO_DRUNK
+		CONDITIONS
+			PRODUCT ALCOHOL = 4
+			OBJECT PLAYER IN PLANE
+		ACTIONS
+			MESSAGE You feel slightly dizzy...
+			PRODUCT ALCOHOL + 1
+			
+; (AT THE AIRFIELD)
+; =================
+
+	EVENT CUSTOMS3
+		CONDITIONS
+			PRODUCT CUSTOMS_CLEARED = 0
+			OBJECT PLAYER IN CUSTOMS_DESK
+		ACTIONS
+			PRODUCT CUSTOMS_CLEARED = 1
+			MESSAGE "Anything to declare?" the customs officer asks you.
+
+	EVENT CUSTOMS4
+		CONDITIONS
+			ENTRY NO
+			PRODUCT CUSTOMS_CLEARED = 1
+			OBJECT PLAYER WITH CUSTOMS_MAN
+		ACTIONS
+			MESSAGE "Thank you," he says. "Let's see if the rest of your papers are ok..."
+			PRODUCT CUSTOMS_CLEARED = 2
+
+	EVENT CUSTOMS5
+		CONDITIONS
+			ENTRY YES
+			OBJECT PLAYER WITH CUSTOMS_MAN
+			PRODUCT CUSTOMS_CLEARED = 1
+		ACTIONS
+			MESSAGE The officer goes through your luggage, but he doesn't find anything taxable. "Happens all the time," he says in amusement. "Are the rest of your papers allrigt...?"
+			PRODUCT CUSTOMS_CLEARED = 2
+
+	EVENT CUSTOMS6
+		CONDITIONS
+			OBJECT PLAYER IN CUSTOMS_DESK
+			PRODUCT CUSTOMS_CLEARED = 2
+		ACTIONS
+			MESSAGE "Everything is ok," he continues, "welcome to Faraway, $LNAME. You may leave the customs desk."
+
+   EVENT LEAVE_CUST1
+   	CONDITIONS
+   		ENTRY LEAVE
+   		OBJECT PLAYER IN CUSTOMS_DESK
+   		PRODUCT CUSTOMS_CLEARED = 2
+   	ACTIONS
+   		MESSAGE You leave the customs department and the airport building.
+			OBJECT PLAYER IN AIRPORT_STREET   		
+
+; Giving book to boy/girlfriend - forwarding it to Faraway.
+
+		EVENT BOOK_GIVEN
+			CONDITIONS
+				OBJECT LITTERATURE IN GIRLFRIEND
+			ACTIONS
+				OBJECT LITTERATURE IN FO_STREET
+				MESSAGE Eva says, "Allright, I will send the book to you".
+
+		EVENT BOOK_GIVEN
+			CONDITIONS
+				OBJECT LITTERATURE IN BOYFRIEND
+			ACTIONS
+				OBJECT LITTERATURE IN FO_STREET
+				MESSAGE Adam says, "Allright, I will send the book to you".
+				
+				

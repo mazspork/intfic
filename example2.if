@@ -1,0 +1,135 @@
+; Definition file for example adventure "EXPLORING EVA'S APARTMENT"
+
+; This file consists of three parts:
+;
+;   1. All the object definitions and how they are linked together
+;   2. The vocabulary of the game
+;   3. The list of events and how they affect the state of the game
+
+; First, the object data. Use the following format:
+;
+; OBJECT <ROOM NAME>
+;		BRIEF <brief description>
+;		VERBOSE <verbose description>
+;		PARENT <parent room>
+;		GRAPHIC <filename.ext>
+
+OBJECTS
+
+OBJECT OUTSIDE
+	BRIEF outside
+	VERBOSE You are outside your apartment. You can enter through your front door to the south
+
+OBJECT ENTRANCE_HALL
+	BRIEF entrance hall
+	VERBOSE You are in your entrance hall. Your front door is to the north and the main hall is to the south. The small toilet is through a door to the west
+
+OBJECT TOILET
+	BRIEF small toilet
+	VERBOSE You are in the tiny toilet in your apartment. East is the only way out
+
+OBJECT MAIN_HALL
+	BRIEF main hall
+	VERBOSE You are standing in the main hall. You can go north to the entrance hall, south to the lounge, west to the kitchen and east to the hallway. A staircase leads upwards
+
+OBJECT LOUNGE
+	BRIEF living room
+	VERBOSE You are in a large lounge, your living room. From here, you can go north to the main hall and south to the balcony
+
+OBJECT KITCHEN
+	BRIEF kitchen
+	VERBOSE You are in the kitchen. It is a rectangular room with closets and drawers everywhere. The kitchen door leads to the main hall to the north, and another door to the south will take you to the balcony
+
+OBJECT BALCONY1
+	BRIEF balcony
+	VERBOSE You are standing on the balcony. You can see a field with cows muttering about and the Geneva airport. Beyond, picturesque view of the Alps extend in the horizon. The balcony continues to the east while a door leads to the kitchen to the north
+
+OBJECT BALCONY2
+	BRIEF balcony
+	VERBOSE You are standing on the balcony. You can see a field with cows muttering about and the Geneva airport. Beyond, picturesque view of the Alps extend in the horizon. The balcony continues to the west while a door leads to the lounge to the north
+
+OBJECT HALLWAY
+	BRIEF hallway
+	VERBOSE You are in a narrow hallway. The hallway is still under construction, so the only way out of here is back to the main hall - west
+
+OBJECT TABLE
+	BRIEF table
+	VERBOSE a square, white table with piles of paper on it
+
+OBJECT TV_SET
+	BRIEF television set
+	VERBOSE a 22" colour television set
+
+; Now for the vocabulary
+; The word classes are: VERBS, NOUNS, ADJECTIVES, ADVERBS, PREPOSITIONS and
+; ARTICLES. Things like "it" and "she" fits under NOUNS, otherwise the nouns
+; are defined through the objects.
+; Use the following format:
+;
+; <WORD-CLASS>
+;		<WORD-ID> <synonym> ...
+;		<WORD-ID> <synonym> ...
+;
+
+VOCABULARY
+
+VERBS
+	take get fetch
+	open reopen
+	close shut slam
+	go enter
+	north n
+	south s
+	east e
+	west w
+	up u
+	down d
+	in
+	out leave exit
+	end stop quit
+
+NOUNS
+	it
+
+ADVERBS
+	and
+	or
+
+PREPOSITIONS
+	with
+
+ARTICLES
+	the a
+
+
+; List of events - the actual story defined as dependency nodes
+; Use the format:
+;
+; EVENT <event-name>
+;		CONDITION <flag> = <value>
+;		CONDITION <object1> IN <object2>
+;		CONDITION <object1> WITH <object2>
+;		ENTRY <string>
+;		MESSAGE <string>
+;     SET <flag> <value>
+;
+
+EVENTS
+
+EVENT Unlock the door
+	CONDITIONS
+		ENTRY UNLOCK DOOR
+		OBJECT PLAYER IN ENTRANCE_HALL
+		OBJECT KEY IN PLAYER
+
+	ACTIONS
+		MESSAGE The door is now open
+		SET DOOR_OPEN 1
+
+EVENT Escaped!
+	CONDITIONS
+		OBJECT PLAYER IN OUTSIDE
+
+	ACTIONS
+		MESSAGE You have escaped!
+		SET GAME 0

@@ -1,0 +1,142 @@
+
+; THIS FILE CONTAINS THE DRIVING-AROUND IN THE OFFICIAL CAR
+
+EVENTS
+
+	EVENT ENTER_CAR
+		CONDITIONS
+			ENTRY ENTER CAR
+			OBJECT CAR WITH PLAYER ERROR The car isn't here
+		ACTIONS
+			MESSAGE You enter the car.
+			OBJECT PLAYER IN CAR
+			
+	EVENT LEAVE_CAR
+		CONDITIONS
+			ENTRY LEAVE CAR
+			OBJECT PLAYER IN CAR ERROR You are not in the car.
+		ACTIONS
+			MESSAGE You leave the car.
+			OBJECT PLAYER WITH CAR
+
+	EVENT GO_HEAD1
+		CONDITIONS
+			ENTRY GO FIELD
+			OBJECT PLAYER IN CAR
+			OBJECT CAR NOTIN HO_STREET
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are in front of the field office.
+			OBJECT CAR IN HO_STREET
+			
+	EVENT GO_HEAD2
+		CONDITIONS
+			ENTRY GO FIELD
+			OBJECT PLAYER NOTIN CAR
+			OBJECT PLAYER NOTIN HO_STREET
+		ACTIONS
+			MESSAGE You enter the car and drive to the field office.
+			OBJECT CAR IN HO_STREET
+			OBJECT PLAYER IN HO_STREET
+
+	EVENT GO_SITE1
+		CONDITIONS
+			ENTRY GO SITE
+			OBJECT PLAYER IN CAR
+			OBJECT CAR NOTIN SITE
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are at the project site.
+			OBJECT CAR IN SITE
+			
+	EVENT GO_SITE2
+		CONDITIONS
+			ENTRY GO SITE
+			OBJECT PLAYER NOTIN CAR
+			OBJECT PLAYER NOTIN SITE
+		ACTIONS
+			MESSAGE You enter the car and drive to the project site.
+			OBJECT CAR IN SITE
+			OBJECT PLAYER IN SITE
+
+	EVENT GO_proj1
+		CONDITIONS
+			ENTRY GO PROJECT
+			OBJECT PLAYER IN CAR
+			OBJECT CAR NOTIN FO_STREET
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are in front of the project office.
+			OBJECT CAR IN FO_STREET
+			
+	EVENT GO_proj2
+		CONDITIONS
+			ENTRY GO PROJECT
+			OBJECT PLAYER NOTIN CAR
+			OBJECT PLAYER NOTIN FO_STREET
+		ACTIONS
+			MESSAGE You enter the car and drive to the project office.
+			OBJECT CAR IN FO_STREET
+			OBJECT PLAYER IN FO_STREET
+
+	EVENT GO_MINI1
+		CONDITIONS
+			ENTRY GO MINISTRY
+			OBJECT PLAYER IN CAR
+			OBJECT CAR NOTIN GO_STREET
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are in front of the governmental offices.
+			OBJECT CAR IN GO_STREET
+			
+	EVENT GO_MINI2
+		CONDITIONS
+			ENTRY GO MINISTRY
+			OBJECT PLAYER NOTIN CAR
+			OBJECT PLAYER NOTIN GO_STREET
+		ACTIONS
+			MESSAGE You enter the car and drive to the governmental offices.
+			OBJECT CAR IN GO_STREET
+			OBJECT PLAYER IN GO_STREET
+			
+	EVENT GO_NGO1
+		CONDITIONS
+			ENTRY GO NGO
+			OBJECT PLAYER IN CAR
+			OBJECT CAR NOTIN NGO_STREET
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are in front of the offices of the NGOs in Faraway.
+			OBJECT CAR IN NGO_STREET
+			
+	EVENT GO_NGO2
+		CONDITIONS
+			ENTRY GO NGO
+			OBJECT PLAYER NOTIN CAR
+			OBJECT PLAYER NOTIN NGO_STREET
+		ACTIONS
+			MESSAGE You enter the car and drive to the NGO offices.
+			OBJECT CAR IN NGO_STREET
+			OBJECT PLAYER IN NGO_STREET
+
+	EVENT GO_AIRPORT1
+		CONDITIONS
+			ENTRY GO AIRPORT
+			OBJECT PLAYER IN CAR
+			OBJECT CAR NOTIN AIRPORT_STREET
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are in front of the airport building.
+			OBJECT CAR IN AIRPORT_STREET
+			
+	EVENT GO_AIRPORT2
+		CONDITIONS
+			ENTRY GO AIRPORT
+			OBJECT PLAYER NOTIN CAR
+			OBJECT PLAYER NOTIN AIRPORT_STREET
+		ACTIONS
+			MESSAGE You enter the car and drive to the airport.
+			OBJECT CAR IN AIRPORT_STREET
+			OBJECT PLAYER IN AIRPORT_STREET
+
+	EVENT FASTEN_BELTS
+		CONDITIONS
+			ENTRY FASTEN BELTS
+			OBJECT PLAYER IN CAR
+		ACTIONS
+			MESSAGE Good idea! You fasten your seat belts. 
+			

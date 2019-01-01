@@ -1,0 +1,120 @@
+; ******** Interactive Fiction Description File ********
+
+;    SCENE: GOVERNMENTAL SCENES
+;
+;   AUTHOR: MAZ
+;
+; MODIFIED: FEB-91
+
+
+OBJECTS DIVISION -----------------------------------------------------------
+
+; LOCATIONS
+
+	OBJECT GO_STREET
+		BRIEF1 street outside the governmental offices
+		VERBOSE You are outside the offices of the ministry of agriculture and development in Faraway.
+		EXITS GO_OFFICE
+		GRAPHIC STREETE.PIC
+		
+	OBJECT GO_OFFICE
+		BRIEF1 inside the governmental offices
+		VERBOSE You are inside the offices of the ministry of agriculture and development in Faraway.
+		EXITS GO_STREET
+		GRAPHIC GOOFF.PIC
+
+
+; THINGS
+
+
+; PEOPLE
+
+	OBJECT MINISTER
+		BRIEF1 Charlotte Nyby, the Minister of Agriculture
+		VERBOSE She has a lot of experience with setting up agricultural projects, but has a tight budget.
+		PARENT GO_OFFICE
+
+PRODUCTS DIVISION ----------------------------------------------------------
+
+; GENERIC PRODUCTS
+
+	PRODUCT FIRST_MEETING_GO = 0
+
+; TIMER PRODUCTS
+
+; RANDOM PRODUCTS
+
+
+EVENTS DIVISION ------------------------------------------------------------
+
+	EVENT GO_GO1
+		CONDITIONS
+			ENTRY GO OFFICE
+			OBJECT PLAYER IN GO_STREET
+		ACTIONS
+			OBJECT PLAYER IN GO_OFFICE
+
+	EVENT LEAVE_GO
+		CONDITIONS
+			ENTRY LEAVE OFFICE
+			OBJECT PLAYER IN GO_OFFICE
+		ACTIONS
+			OBJECT PLAYER IN GO_STREET
+
+	EVENT GO_GO1
+		CONDITIONS
+			ENTRY GO MINISTRY
+			OBJECT PLAYER IN GO_STREET
+		ACTIONS
+			OBJECT PLAYER IN GO_OFFICE
+
+	EVENT LEAVE_GO
+		CONDITIONS
+			ENTRY LEAVE MINISTRY
+			OBJECT PLAYER IN GO_OFFICE
+		ACTIONS
+			OBJECT PLAYER IN GO_STREET
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH MINISTER
+			PRODUCT FIRST_MEETING_GO = 0
+		ACTIONS
+			MESSAGE The Minister says: "Hello, $LNAME, I have been expecting you. I will get right to business: we must start as soon as possible to aviod the dry season. Therefore:"
+			PRODUCT FIRST_MEETING_GO = 1
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH MINISTER
+			PRODUCT FIRST_MEETING_GO = 10
+		ACTIONS
+			MESSAGE The minister looks at you. "Have you changed your mind? Remember the problem with the dry season. I'll repeat the terms:"
+			PRODUCT FIRST_MEETING_GO = 1
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH MINISTER
+			PRODUCT FIRST_MEETING_GO = 1
+		ACTIONS
+			MESSAGE She continues: "My government will pay the whole cost now, but you must assure me that IDO will repay 40% of all costs. Can you do that?"
+			PRODUCT FIRST_MEETING_GO = 2
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			ENTRY YES
+			OBJECT PLAYER WITH MINISTER
+			PRODUCT FIRST_MEETING_GO = 2
+		ACTIONS
+			MESSAGE "Fine.", she says. She pulls out a contract, which you sign. "Now, I will arrange for the workers to go to to the project site. They will be there by tomorrow."
+			PRODUCT FUNDS = 1
+			PRODUCT FIRST_MEETING_GO = 3
+			
+	EVENT FIRST_MEET
+		CONDITIONS
+			ENTRY NO
+			OBJECT PLAYER WITH MINISTER
+			PRODUCT FIRST_MEETING_GO = 2
+		ACTIONS
+			MESSAGE "Well, I am sorry to hear that. Unfortunately, then, the government is unable to provide any help at all. Goodbye, $LNAME." You are shown to the door.
+			PRODUCT FIRST_MEETING_GO
+						

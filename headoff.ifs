@@ -1,0 +1,141 @@
+; ******** Interactive Fiction Description File ********
+
+;    SCENE: HEAD OFFICE
+;
+;   AUTHOR: MAZ
+;
+; MODIFIED: FEB 91
+
+
+OBJECTS DIVISION -----------------------------------------------------------
+
+; LOCATIONS
+
+	OBJECT HO_STREET STATIC
+		BRIEF1 outside field office
+		VERBOSE You are outside the field office of International Development in Faraway. You can go inside.
+      EXITS HEAD_OFFICE
+      GRAPHIC STREETB.PIC
+      
+   OBJECT HEAD_OFFICE STATIC
+   	BRIEF1 inside field office
+   	VERBOSE You are inside the field office of International Development in Faraway.
+		EXITS HO_STREET
+		GRAPHIC HEADOFF.PIC
+		
+; THINGS
+
+	OBJECT CAR STATIC
+		BRIEF1 the official car (with your driver inside)
+		BRIEF2 the car
+		VERBOSE You are in the official car.
+		PARENT AIRPORT_STREET
+		GRAPHIC CAR.PIC
+
+	OBJECT MAP
+		BRIEF1 a map of the project site
+		BRIEF2 the map of the project site
+		VERBOSE You look at the map. The river (blue) is very weak on water, and all its capacity is being used by the local villages. The site office (white) is coordinating the project, and the project site (red) is a 12.000 ha. area to be planted.
+		GRAPHIC MAP.PIC
+
+; PEOPLE
+      
+	OBJECT DRIVER ACTOR
+		BRIEF1 Andrew, your driver
+		BRIEF2 the driver
+		VERBOSE Andrew is really tough. He can overcome most hazards conceivable on a road, and knows most of Faraway as his own pocket.
+		PARENT CAR
+
+	OBJECT RESREP ACTOR
+		BRIEF1 Robin Williams, the Resident Representative
+		BRIEF2 Robin Williams
+		VERBOSE Robin Williams has been in Faraway for almost fifteen years, and has been involved in numerous projects here.
+		PARENT HEAD_OFFICE
+
+	OBJECT SECRETARY ACTOR
+		BRIEF1 Miriam, the secretary
+		BRIEF2 Miriam
+		VERBOSE Miriam is a newcomer. She arrived here very few weeks ago and is still a bit confused with the whole thing. She tends to get nervous when things don't go the way they were supposed to.
+		PARENT HEAD_OFFICE
+;
+
+
+PRODUCTS DIVISION ----------------------------------------------------------
+
+; GENERIC PRODUCTS
+
+PRODUCT FIRST_DRIVE = 0
+PRODUCT BRIEFING = 0
+
+; TIMER PRODUCTS
+
+; RANDOM PRODUCTS
+
+
+EVENTS DIVISION ------------------------------------------------------------
+
+	EVENT SEC_DRIVE
+		CONDITIONS
+			OBJECT PLAYER IN CAR
+			PRODUCT FIRST_DRIVE = 1
+		ACTIONS
+			MESSAGE The car starts to move, and soon you are in front of the field office building. "There you are, " the driver says, "leave the car and go inside the building."
+			OBJECT CAR IN HO_STREET
+			PRODUCT FIRST_DRIVE = 2
+
+	EVENT FIRST_DRIVE
+		CONDITIONS
+			OBJECT PLAYER IN CAR
+			PRODUCT FIRST_DRIVE = 0
+		ACTIONS
+			MESSAGE Andrew, the driver, shakes your hand and bids you welcome to Faraway. "How do you do, " he says. "I am instructed to take you to the field office, where the Res. Rep. Robin Williams is to give you a briefing. And I picked up your luggage."
+			PRODUCT FIRST_DRIVE = 1
+
+	EVENT ENTER_HEADOFF
+		CONDITIONS
+			ENTRY GO OFFICE
+			OBJECT PLAYER IN HO_STREET
+		ACTIONS
+			OBJECT PLAYER IN HEAD_OFFICE
+			
+	EVENT LEAVE_HEADOFF
+		CONDITIONS
+			ENTRY LEAVE OFFICE
+			OBJECT PLAYER IN HEAD_OFFICE
+		ACTIONS
+			OBJECT PLAYER IN HO_STREET
+			
+	EVENT BRIEFING1
+		CONDITIONS
+			OBJECT PLAYER IN HEAD_OFFICE
+			PRODUCT BRIEFING = 1
+		ACTIONS
+			MESSAGE "First, I'll tell you about the people you are going to meet. First, there is the Ministry of Agriculture, which will help you with finding workers for the project as well as providing information on the soil at the project site. The minister's name is Charlotte Nyby."
+			PRODUCT BRIEFING = 2
+
+	EVENT BRIEFING2
+		CONDITIONS
+			OBJECT PLAYER IN HEAD_OFFICE
+			PRODUCT BRIEFING = 2
+		ACTIONS
+			MESSAGE "Then, there's the non-governmental organisations. The most important one is the Green Belt Foundation, which has a lot of experience in this field. They are represented here by  Morgan Lee, who will help you order the plants."
+			PRODUCT BRIEFING = 3
+	
+	EVENT BRIEFING3
+		CONDITIONS
+			OBJECT PLAYER IN HEAD_OFFICE
+			PRODUCT BRIEFING = 3
+		ACTIONS
+			MESSAGE "Last, you will need to know about the project office and site. The office is very sparsely set up, as we wanted it as close to the site as possible. There is a local maintenance clerk out there, Mr. Azur, who is responsible for tools and supplies. Here's a map of the project site. I suggest you go there right away to see what it looks like." He gives you a map.
+			OBJECT MAP IN PLAYER
+			PRODUCT BRIEFING = 4
+	
+	EVENT BRIEFING
+		CONDITIONS
+			OBJECT PLAYER IN HEAD_OFFICE
+			PRODUCT BRIEFING = 0
+		ACTIONS
+			MESSAGE "Welcome, " the resident representative Robin Williams says as you enter. "I hope you have had a pleasant flight. I am instructed to give you a full briefing on your mission here, so let's start right away."
+			PRODUCT BRIEFING = 1
+	
+

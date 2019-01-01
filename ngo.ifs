@@ -1,0 +1,132 @@
+; ******** Interactive Fiction Description File ********
+
+;    SCENE: NON-GOVERNMENTAL ORGANISATIONS
+;
+;   AUTHOR: MAZ
+;
+; MODIFIED: FEB-91
+
+
+OBJECTS DIVISION -----------------------------------------------------------
+
+; LOCATIONS
+
+	OBJECT NGO_STREET
+		BRIEF1 street outside the non-governmental offices
+		VERBOSE You are outside the offices of the non-governmental organisations represented in Faraway. From here, the Green Belt Foundation (GBF) carries out tasks throughout the country.
+		EXITS NGO_OFFICE
+		GRAPHIC STREETD.PIC
+		
+	OBJECT NGO_OFFICE
+		BRIEF1 inside the non-governmental offices
+		VERBOSE You are inside the offices of the Green Belt Foundation.
+		EXITS NGO_STREET
+		GRAPHIC NGOOFF.PIC
+
+; THINGS
+
+
+; PEOPLE
+
+	OBJECT ACTIVIST
+		BRIEF1 Morgan Lee, the representative of GBF
+		VERBOSE Morgan Lee has been in the forest "business" for a long time. He knows a lot about how and where to plant which trees, and also about costs and maintenance.
+		PARENT NGO_OFFICE
+
+
+PRODUCTS DIVISION ----------------------------------------------------------
+
+; GENERIC PRODUCTS
+
+	PRODUCT FIRST_MEETING_NGO = 0
+
+; TIMER PRODUCTS
+
+; RANDOM PRODUCTS
+
+
+EVENTS DIVISION ------------------------------------------------------------
+
+	EVENT GO_NGO1
+		CONDITIONS
+			ENTRY GO OFFICE
+			OBJECT PLAYER IN NGO_STREET
+		ACTIONS
+			OBJECT PLAYER IN NGO_OFFICE
+
+	EVENT GO_NGO1
+		CONDITIONS
+			ENTRY LEAVE OFFICE
+			OBJECT PLAYER IN NGO_OFFICE
+		ACTIONS
+			OBJECT PLAYER IN NGO_STREET
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = 2
+			PRODUCT FUNDS = 0
+		ACTIONS
+			MESSAGE He says: "Please, I urge you to go to the Minister."
+			PRODUCT FIRST_MEETING_NGO = -1
+
+	EVENT REDOMEET
+		CONDITIONS
+			OBJECT PLAYER NOTWITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = -1
+		ACTIONS
+			PRODUCT FIRST_MEETING_NGO = 0
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = 1
+			PRODUCT FUNDS = 0
+		ACTIONS
+			MESSAGE "I hope you will succeed in your project. Yyou may want to go to the Minister of Agriculture at the government offices to raise funds."
+			PRODUCT FIRST_MEETING_NGO = 2
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = 1
+			PRODUCT FUNDS = 1
+		ACTIONS
+			MESSAGE "Congratulations with your funding. Here's what I must know in order to proceed:"
+			PRODUCT FIRST_MEETING_NGO = 3
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = 3
+			PRODUCT FUNDS = 1
+		ACTIONS
+			INPUT NUM_TREES How many trees should be ordered (thousands)? 
+			INPUT TYP_TREES Of what kind (1 = Eucalyptus, 2 = Palms, 3 = both)? 
+			PRODUCT FIRST_MEETING_NGO = 4
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = 4
+		ACTIONS
+			MESSAGE "Fine. They will be at your site by tomorrow. Unfortunately, I am very busy right now, so I will have to see you again later. Good-bye."
+			PRODUCT TREES = 1
+			PRODUCT FIRST_MEETING_NGO = 5
+			
+	EVENT FIRST_MEET
+		CONDITIONS
+			ENTRY NO
+			PRODUCT FIRST_MEETING_NGO = 3
+		ACTIONS
+			MESSAGE "Allright, fine. Unfortunately, I am very busy right now, so I will have to see you again later. Good-bye. Come back if you change your mind."
+			PRODUCT FIRST_MEETING_NGO = 1
+
+	EVENT FIRST_MEET
+		CONDITIONS
+			OBJECT PLAYER WITH ACTIVIST
+			PRODUCT FIRST_MEETING_NGO = 0
+		ACTIONS
+			MESSAGE Morgan Lee welcomes you. "Hello there, $FNAME, how do you do?"
+			PRODUCT FIRST_MEETING_NGO = 1
+

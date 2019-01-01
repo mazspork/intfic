@@ -1,0 +1,31 @@
+; ******** Interactive Fiction Description File ********
+
+;    SCENE:
+;
+;   AUTHOR:
+;
+; MODIFIED:
+
+
+OBJECTS DIVISION -----------------------------------------------------------
+
+; LOCATIONS
+
+
+; THINGS
+
+
+; PEOPLE
+
+
+PRODUCTS DIVISION ----------------------------------------------------------
+
+; GENERIC PRODUCTS
+
+; TIMER PRODUCTS
+
+; RANDOM PRODUCTS
+
+
+EVENTS DIVISION ------------------------------------------------------------
+

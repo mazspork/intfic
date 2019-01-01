@@ -1,0 +1,56 @@
+; Small and silly example that defines a coffee-making project
+
+OBJECTS				; First, the objects
+
+OBJECT KITCHEN
+	BRIEF your kitchen
+	VERBOSE You are in the kitchen. This is a small rectangular room.
+
+OBJECT COFFEE_MACHINE
+	BRIEF coffee machine
+	VERBOSE You see a small coffee machine, of poor design and technology.
+	PARENT KITCHEN
+
+OBJECT GROUND_COFFEE
+	BRIEF ground coffee
+	VERBOSE You see some freshly ground coffee.
+	PARENT KITCHEN
+
+OBJECT COFFEE
+	BRIEF some coffee
+	VERBOSE A cup of nice, hot coffee.
+
+
+VOCABULARY			; Then, the vocabulary
+
+VERBS
+	MAKE
+	DRINK
+
+PRODUCTS				; The products
+
+PRODUCT DRINK = 0
+
+EVENTS				; and the events/activities that can happen
+
+EVENT COFFEEMAKING
+	CONDITIONS
+		ENTRY MAKE COFFEE
+		OBJECT COFFEE_MACHINE WITH PLAYER ERROR How can you make coffee without a coffee machine?
+		OBJECT GROUND_COFFEE WITH PLAYER ERROR You have no ground coffee
+
+	MESSAGE You've made coffee
+
+	ACTIONS
+		COFFEE WITH PLAYER
+
+EVENT COFFEEDRINKING
+	CONDITIONS
+		ENTRY DRINK COFFEE
+		OBJECT COFFEE WITH PLAYER ERROR "You have no coffee!"
+
+	MESSAGE You drink the coffee. Tastes awful!
+
+	ACTIONS
+		OBJECT COFFEE KILL
+		PRODUCT DRINK = 1

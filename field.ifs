@@ -1,0 +1,71 @@
+; ******** Interactive Fiction Description File ********
+
+;    SCENE: FIELD OFFICE
+;
+;   AUTHOR: EVA
+;
+; MODIFIED: 15/10/90
+
+
+OBJECTS DIVISION -----------------------------------------------------------
+
+; LOCATIONS
+
+	OBJECT FO_STREET STATIC
+		BRIEF1  at the project office
+		VERBOSE You are at the project office close to the project.
+		GRAPHIC FIELDOFF.PIC
+		
+	OBJECT SITE STATIC
+		BRIEF1 at project site
+		VERBOSE You are at the project site. A bare and barren land.
+		EXITS FO_STREET
+		GRAPHIC SITE.PIC
+		
+	OBJECT SITE1
+		BRIEF1 at project site
+		VERBOSE You are at the project site, now with a complete plantation.
+		EXITS FO_STREET
+		GRAPHIC SITE1.PIC
+
+	OBJECT SITE2
+		BRIEF1 at project site
+		VERBOSE You are at the project site, now with a complete plantation.
+		EXITS FO_STREET
+		GRAPHIC SITE1.PIC
+
+; THINGS
+
+; PEOPLE
+
+	OBJECT CLERK ACTOR
+		BRIEF1 Mr. Azur, the maintenance clerk
+		VERBOSE He's thorough and hard-working.
+		PARENT FO_STREET
+
+PRODUCTS DIVISION ----------------------------------------------------------
+
+; GENERIC PRODUCTS
+
+; TIMER PRODUCTS
+
+; RANDOM PRODUCTS
+
+
+EVENTS DIVISION ------------------------------------------------------------
+
+	EVENT SITE_CORRECT
+		CONDITIONS
+			OBJECT PLAYER IN SITE
+			PRODUCT PLANTED > 0
+		ACTIONS
+			OBJECT PLAYER IN SITE1
+
+	EVENT SITE_CORRECT_again
+		CONDITIONS
+			OBJECT PLAYER IN SITE1
+			PRODUCT EATEN > 0
+		ACTIONS
+			OBJECT PLAYER IN SITE2
+
+

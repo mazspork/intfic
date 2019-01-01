@@ -1,0 +1,22 @@
+		cout << "Welcome to the Interactive Fiction System, a Computer-Aided Training and\n";
+		cout << "Evaluation (CATE) technology development.\n\n";
+		cout << "Limited Licence and Conditions of Use:\n\n";
+		cout << "  \"You are hereby granted the licenced to copy and redistribute the software\n";
+		cout << "   on this diskette, PROVIDED:\n";
+		cout << "   - that you make take no money for doing so,\n";
+		cout << "   - that you redistribute the diskette in its entirety,\n";
+		cout << "     including this copyright/licence notice, and\n";
+		cout << "   - that you do not modify any of its contents.\n\n";
+		cout << "   This software is the property of the copyright holders. Any violation\n";
+		cout << "   of the conditions will automatically revoke the licence, and is liable\n";
+		cout << "   to criminal prosecution for copyright infrigement.\n";
+		cout << "   Disclaimer: This software is provided \"as is\", and the publisher\n";
+		cout << "   assumes no responsibility for any damage or injury resulting from its\n";
+		cout << "   use, whether direct or indirect.\"\n\n";
+		cout << "In other words: This game is placed in the public domain for your benefit,\n";
+		cout << "and you are allowed to make copies to your friends and colleagues, but please\n";
+		cout << "acknowledge our work and don't make a living out of it!\n";
+		cout << "Copyright (C) 1990, Maz Spork, Eva Arnvig and Nils Jensen. All rights reserved.\n\n";
+
+		cout << "Press a key to start";
+		getch ();

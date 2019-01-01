@@ -1,0 +1,34 @@
+; Here's the section about consulting the Guide Book on several
+; different topics.
+
+; You can consult the book on:-
+;		- trees
+;		- soil
+;		- grasshoppers
+;		- fire
+
+
+events
+
+	event GB1
+		conditions
+			entry CONSULT TREES
+			object LITTERATURE within PLAYER error MSG74
+		actions
+			message From experiences with forestation in equatorial countries, it is successfully proven that substantially fewer trees can survive on the same land mass as compared to sub-tropic and non-equatorial areas. Thus, for maximum growth, trees should be wider scattered and have a lower frecuency per square unit. See also fire-belts.
+
+	event GB2
+		conditions
+			entry CONSULT SOIL
+			object LITTERATURE within PLAYER error MSG74
+		actions
+			message The soil in equatorial countries has distinct properties compared to more moderate tempered areas of the world. Generally, the ground is less moist, even deep down. Thus, there is always a risk of drying out wells if planting too densely on the surface. Trees in equatorial countries spread their roots very deep - often more than 30 metres - to be able to survive at all.
+
+	event GB3
+		conditions
+			entry CONSULT FIREBELTS
+			object LITTERATURE within PLAYER error MSG74
+		actions
+			message It is very important to remember to protect a plantation against accidents such as fires. When foresting land in equatorial countries, fire belts with a frequency of one for each 400 ha. is a good idea.
+
+

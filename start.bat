@@ -1,0 +1,3 @@
+@echo off
+echo 'Ere we go...
+ifs game.ifs

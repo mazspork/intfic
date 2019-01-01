@@ -1,0 +1,38 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 0151AH 0151BH EVENT_TEXT         CODE
+ 0151CH 01579H 0005EH EVENT_DATA         FAR_DATA
+
+Error: Undefined symbol operator delete(void far*) in module EVENT.CPP
+Error: Undefined symbol event::root in module EVENT.CPP
+Error: Undefined symbol _STRCMP in module EVENT.CPP
+Error: Undefined symbol _STRCPY in module EVENT.CPP
+Error: Undefined symbol catastrophy(unsigned char far*) in module EVENT.CPP
+Error: Undefined symbol operator new(unsigned int) in module EVENT.CPP
+Error: Undefined symbol _STRLEN in module EVENT.CPP
+Error: Undefined symbol message::getmsg(int) in module EVENT.CPP
+Error: Undefined symbol _MESSAGES in module EVENT.CPP
+Error: Undefined symbol _ATOL in module EVENT.CPP
+Error: Undefined symbol _STRNCMP in module EVENT.CPP
+Error: Undefined symbol error(unsigned char far*,unsigned char far*,int) in module EVENT.CPP
+Error: Undefined symbol vocabulary::getother(int) in module EVENT.CPP
+Error: Undefined symbol _VOCAB in module EVENT.CPP
+Error: Undefined symbol vocabulary::getnumber(unsigned char far*) in module EVENT.CPP
+Error: Undefined symbol getnext(unsigned char far*far&) in module EVENT.CPP
+Error: Undefined symbol __CTYPE in module EVENT.CPP
+Error: Undefined symbol prettyprint(unsigned char far*,unsigned char far*,unsigned char far*,unsigned char far*,unsigned char far*,unsigned char far*) in module EVENT.CPP
+Error: Undefined symbol input(unsigned char far*,int) in module EVENT.CPP
+Error: Undefined symbol printout(unsigned char) in module EVENT.CPP
+Error: Undefined symbol _SENTENCE in module EVENT.CPP
+Error: Undefined symbol vocabulary::gettype(int) in module EVENT.CPP
+Error: Undefined symbol _PRODUCTS in module EVENT.CPP
+Error: Undefined symbol _CMDERR in module EVENT.CPP
+Error: Undefined symbol product::match(int,unsigned char,int) in module EVENT.CPP
+Error: Undefined symbol object::issister(object far*) in module EVENT.CPP
+Error: Undefined symbol product::affect(int,unsigned char,int) in module EVENT.CPP
+Error: Undefined symbol object::setparent(object far*) in module EVENT.CPP
+Error: Undefined symbol object::setsister(object far*) in module EVENT.CPP
+Program entry point at 0000:0000
+Warning: No stack
+
